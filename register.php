@@ -207,7 +207,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         p{font-style: italic;}
         label{color: royalblue;}
         body{ font: 14px sans-serif; }
-        .wrapper{width: 300px; padding: 20px;position: relative ;margin: 0;position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)}
+        input{font-style: italic;}
+        .wrapper{width: 350px; padding: 20px;position: relative ;margin: 0;position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)}
     </style>
 </head>
 <body>
@@ -216,36 +217,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>Try our delicious items!</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+
+            <input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $name; ?>">
             <span class="help-block"><?php echo $name_err; ?></span>
 
         </div>
         <div class="form-group <?php echo (!empty($user_name_err)) ? 'has-error' : ''; ?>">
-            <label>Username</label>
-            <input type="text" name="user_name" class="form-control" value="<?php echo $user_name; ?>">
+
+            <input type="text" name="user_name" class="form-control" placeholder="User Name" value="<?php echo $user_name; ?>">
             <span class="help-block"><?php echo $user_name_err; ?></span>
 
         </div>
         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+
+            <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
             <span class="help-block"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-            <label>Confirm Password</label>
-            <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+
+            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" value="<?php echo $confirm_password; ?>">
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-            <label>Email</label>
-            <input type="text" email="email" class="form-control" value="<?php echo $email; ?>">
+
+            <input type="text" email="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
             <span class="help-block"><?php echo $email_err; ?></span>
 
         </div>
         <div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
-            <label>Phone</label>
-            <input type="text" phone="phone" class="form-control" value="<?php echo $phone; ?>">
+
+            <input type="text" phone="phone" class="form-control" placeholder="Phone" value="<?php echo $phone; ?>">
             <span class="help-block"><?php echo $phone_err; ?></span>
 
         </div>
