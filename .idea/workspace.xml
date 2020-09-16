@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef12650a-651e-428a-a860-5a7c0410f3df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Welcome Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/Welcome Page.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +68,7 @@
       <workItem from="1600097632606" duration="15601000" />
       <workItem from="1600115519958" duration="15000" />
       <workItem from="1600145979822" duration="19290000" />
-      <workItem from="1600246462761" duration="1652000" />
+      <workItem from="1600246462761" duration="3015000" />
     </task>
     <servers />
   </component>
@@ -103,10 +105,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="621" y="122" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600097968904" />
-    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1600248118343">
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1600248408511">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1600248118343" />
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1600248408511" />
     <state x="727" y="410" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600099261272" />
     <state x="711" y="240" key="RollbackChangesDialog" timestamp="1600084637506">
       <screen x="0" y="0" width="1920" height="1040" />
