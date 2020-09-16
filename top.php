@@ -38,18 +38,18 @@ if (isset($_SESSION['IS_LOGIN'])){
 
             </ul>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.png" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo.png" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="Welcome_Page.php"><img src="assets/images/logo.png" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="Welcome_Page.php"><img src="assets/images/logo.png" alt="logo"/></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
 
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <span class="nav-profile-name">Vishal Gupta</span>
+                        <span class="nav-profile-name">Salman</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">
+                        <a class="dropdown-item" href="logout.php">
                             <i class="mdi mdi-logout text-primary"></i>
                             Logout
                         </a>
@@ -72,7 +72,7 @@ if (isset($_SESSION['IS_LOGIN'])){
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="Welcome_Page.php">
                         <i class="mdi mdi-view-quilt menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -90,7 +90,7 @@ if (isset($_SESSION['IS_LOGIN'])){
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">
+                    <a class="nav-link" href="Login.php">
                         <i class="mdi mdi-airplay menu-icon"></i>
                         <span class="menu-title">Login</span>
                     </a>
