@@ -17,6 +17,7 @@ if (isset($_SESSION['IS_LOGIN'])){
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
@@ -78,23 +79,12 @@ if (isset($_SESSION['IS_LOGIN'])){
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="form.html">
+                    <a class="nav-link" href="category.php">
                         <i class="mdi mdi-view-headline menu-icon"></i>
-                        <span class="menu-title">Form</span>
+                        <span class="menu-title">Category</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="table.html">
-                        <i class="mdi mdi-grid-large menu-icon"></i>
-                        <span class="menu-title">Table</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Login.php">
-                        <i class="mdi mdi-airplay menu-icon"></i>
-                        <span class="menu-title">Login</span>
-                    </a>
-                </li>
+
 
             </ul>
         </nav>

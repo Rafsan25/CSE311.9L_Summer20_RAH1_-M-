@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef12650a-651e-428a-a860-5a7c0410f3df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/top.php" beforeDir="false" afterPath="$PROJECT_DIR$/top.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +37,15 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4.9" />
   <component name="ProjectId" id="1hUVxo2ZYc6Lf7anxDW25A4UYSg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -66,7 +72,7 @@
       <workItem from="1600097632606" duration="15601000" />
       <workItem from="1600115519958" duration="15000" />
       <workItem from="1600145979822" duration="19290000" />
-      <workItem from="1600246462761" duration="5298000" />
+      <workItem from="1600246462761" duration="6662000" />
     </task>
     <servers />
   </component>
@@ -84,6 +90,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="22" key="#CLI_Interpreters" timestamp="1600082455707">
