@@ -14,5 +14,6 @@ function redirect($link){
         window.location.href='<?php echo $link?>';
         </script>
     <?php
+    die();
 }
 ?>
