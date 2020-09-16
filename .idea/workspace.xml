@@ -33,13 +33,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2.32" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4.9" />
   <component name="ProjectId" id="1hUVxo2ZYc6Lf7anxDW25A4UYSg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -65,8 +69,13 @@
       <workItem from="1600082393953" duration="3923000" />
       <workItem from="1600097632606" duration="15601000" />
       <workItem from="1600115519958" duration="15000" />
+<<<<<<< HEAD
       <workItem from="1600145979822" duration="19892000" />
       <workItem from="1600240479737" duration="1191000" />
+=======
+      <workItem from="1600145979822" duration="19290000" />
+      <workItem from="1600246462761" duration="9988000" />
+>>>>>>> 9a86a7fa2a7502bef1d19d311f4c9a4ae723d376
     </task>
     <servers />
   </component>
@@ -85,15 +94,18 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="421" y="22" key="#CLI_Interpreters" timestamp="1600082455707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="421" y="22" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1600082455707" />
-    <state x="548" y="10" key="#PHP" timestamp="1600082462926">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="390" y="7" key="#PHP" timestamp="1600246488825">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="7" key="#PHP/0.0.1366.728@0.0.1366.728" timestamp="1600066177197" />
+    <state x="390" y="7" key="#PHP/0.0.1366.728@0.0.1366.728" timestamp="1600246488825" />
     <state x="548" y="10" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1600082462926" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600097858351">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -103,10 +115,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="621" y="122" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600097968904" />
-    <state x="727" y="410" key="NewPhpFileDialog" timestamp="1600099261272">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1600248408511">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1600068078063" />
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1600248408511" />
     <state x="727" y="410" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600099261272" />
     <state x="711" y="240" key="RollbackChangesDialog" timestamp="1600084637506">
       <screen x="0" y="0" width="1920" height="1040" />
