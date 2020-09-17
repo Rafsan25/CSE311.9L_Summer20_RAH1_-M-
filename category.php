@@ -35,9 +35,9 @@ $res=mysqli_query($link,$sql);
                         <?php
                             $i++;
                             } } else { ?>
-                            <td colspan="5">No Data Found</td>
-
-
+                                <tr>
+                                    <td colspan="5">No Data Found</td>
+                                </tr>
                         <?php
                         } ?>
 
