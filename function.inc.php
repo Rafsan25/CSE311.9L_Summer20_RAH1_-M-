@@ -11,7 +11,7 @@ function prx($arr){
 function redirect($link){
     ?>
     <script>
-        window.location.href='<?php echo $link?>';
+        window.location.href='<?php echo $link ?>';
         </script>
     <?php
     die();
