@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef12650a-651e-428a-a860-5a7c0410f3df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/category.php" beforeDir="false" afterPath="$PROJECT_DIR$/category.php" afterDir="false" />
-    </list>
+    <list default="true" id="ef12650a-651e-428a-a860-5a7c0410f3df" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,8 +77,12 @@
 >>>>>>> 9a86a7fa2a7502bef1d19d311f4c9a4ae723d376
 =======
       <workItem from="1600326633587" duration="1718000" />
+<<<<<<< HEAD
       <workItem from="1600328533165" duration="4460000" />
 >>>>>>> 3cc7ca40911da412fc7c11ae7d03483a71744ea3
+=======
+      <workItem from="1600328533165" duration="4898000" />
+>>>>>>> 2db8d65fd2b2c4d65ca76c1a96b4a287c245c6e5
     </task>
     <servers />
   </component>
