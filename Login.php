@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
     $res=mysqli_query($con,$sql);
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
-        $_SESSION['IS LOGIN']='yes';
+        $_SESSION['IS_LOGIN']='yes';
         $_SESSION['ADMIN_USER']=$row['name'];
         redirect('Welcome_Page.php');
     }
