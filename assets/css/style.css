@@ -29663,4 +29663,8 @@ div.tagsinput span.tag a {
 .add_link{font-size: 18px;}
 /* Margin for Manage Category Title */
 .ml15{margin-left: 15px;}
+/* Error msg color */
+.error{color: red;};
+/* Margin for error meg */
+.mt8{margin-top: 8px;}
 
