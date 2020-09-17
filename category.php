@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 include('top.php');
 
 //Query for Action = Delete, Status(Active/Deactive).
