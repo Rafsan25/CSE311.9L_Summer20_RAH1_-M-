@@ -1,7 +1,7 @@
 <?php
 include ('top.php');
 $sql="SELECT * FROM category ORDER BY order_number";
-$res=mysqli_query($link,$sql);
+$res=mysqli_query($con,$sql);
 
 ?>
 <div class="card">

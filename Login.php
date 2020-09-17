@@ -1,9 +1,9 @@
 <?php
 session_start();
-include ('database.inc.php');
+include ('config.php');
 include ('function.inc.php');
 $msg="";
-if(isset($_POST['Submit']))
+if(isset($_POST['submit']))
 {
     $username=$_POST['username'];
     $password=$_POST['password'];
@@ -13,7 +13,7 @@ if(isset($_POST['Submit']))
     if(mysqli_num_rows($res)>0){
                 $row=mysqli_fetch_assoc($res);
                 $_SESSION['IS LOGIN']='yes';
-                redirect(index.php);
+                redirect('Welcome_Page.php');
             }
     else
         $msg="Please Enter Valid Login Details";
@@ -52,7 +52,7 @@ else{
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" method="post">
 					<span class="login100-form-title p-b-34">
 						Account Login
 					</span>
@@ -67,7 +67,7 @@ else{
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="Submit" class="login100-form-btn" value = "Sign in" name="Submit">
+                        <button type="submit" class="login100-form-btn" value = "Sign in" name="submit">
                         
                         Sign in
 
