@@ -1,5 +1,6 @@
 <?php
 include('top.php');
+
 require_once "config.php";
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['user_id']) && $_GET['user_id']>0){
@@ -13,12 +14,10 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['user_id']) && $_GE
         mysqli_query($link,"update user set status='$status' where user_id='$user_id'");
         redirect('user.php');
     }
-
 }
 
 $sql="select * from user order by user_id desc";
 $res=mysqli_query($link,$sql);
-
 ?>
     <div class="card">
         <div class="card-body">
