@@ -9,7 +9,7 @@ if(isset($_POST['submit']))
     $password=$_POST['password'];
 
     $sql="select * from admin where username='$username' and password='$password'";
-    $res=mysqli_query($link,$sql);
+    $res=mysqli_query($con,$sql);
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
         $_SESSION['IS LOGIN']='yes';

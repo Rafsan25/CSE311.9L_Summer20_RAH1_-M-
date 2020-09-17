@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE name = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_name);
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE user_name = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE email = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_email);
 
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE phone = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_phone);
 
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE address = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_address);
 
@@ -183,9 +183,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($name_err) && empty($user_name_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err) && empty($phone_err) && empty($address_err)) {
 
         // Prepare an insert statement
-        $sql =mysqli_query($link, "INSERT INTO user (`name`,`user_name`, `password`,`email`,`phone`,`address`) VALUES ('$name','$user_name','$password','$email','$phone','$address')");
+        $sql =mysqli_query($con, "INSERT INTO user (`name`,`user_name`, `password`,`email`,`phone`,`address`) VALUES ('$name','$user_name','$password','$email','$phone','$address')");
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ss", $param_name, $param_user_name, $param_password, $param_email, $param_phone, $param_address);
 
@@ -211,7 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Close connection
-    mysqli_close($link);
+    mysqli_close($con);
 }
 
 ?>
