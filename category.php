@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 include('top.php');
 
 //Query for Action = Delete, Status(Active/Deactive).
@@ -31,28 +32,35 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 $sql="select * from category order by order_number";
 $res=mysqli_query($con,$sql);
 
+=======
+include ('top.php');
+$sql="SELECT * FROM category ORDER BY order_number";
+$res=mysqli_query($link,$sql);
+>>>>>>> 237f4c997cdfd736133fc9abe6027aae175b7b1d
 
 ?>
-    <div class="card">
-        <div class="card-body">
-            <h2 class="grid_title">Category</h2>
-            <div class="row">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <table id="order-listing" class="table">
-                            <thead>
-                            <tr>
-                                <th width="10%">S. No</th>
-                                <th width="50%">Category</th>
-                                <th width="15%">Order Number</th>
-                                <th width="25%">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if(mysqli_num_rows($res)>0) {
-                                $i=1;
-                                while($row=mysqli_fetch_assoc($res)){
+<div class="card">
+    <div class="card-body">
+        <h2 class="grid_title">Category</h2>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                        <tr>
+                            <th>Serial No</th>
+                            <th>Category</th>
+                            <th>Order Number</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(mysqli_num_rows($res)>0) {
+                            $i=1;
+                            while($row=mysqli_fetch_assoc($res)){
+
                                 ?>
+<<<<<<< HEAD
                             <tr>
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $row['category']?></td>
@@ -79,18 +87,30 @@ $res=mysqli_query($con,$sql);
                             <?php
                                 $i++;
                                 } } else { ?>
+=======
+>>>>>>> 237f4c997cdfd736133fc9abe6027aae175b7b1d
                                 <tr>
-                                    <td colspan="5">No data found</td>
+                                    <td><?php echo  $i?></td>
+                                    <td><? echo $row['category']?></td>
+                                    <td><? echo $row['order_number']?></td>
+                                    <td></td>
 
                                 </tr>
+                                <?php
+                                $i++;
+                            } } else { ?>
+                            <tr>
+                                <td colspan="5">No Data Found</td>
+                            </tr>
+                            <?php
+                        } ?>
 
-                            <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-<?php include('footer.php'); ?>
+<?php include ('footer.php');?>

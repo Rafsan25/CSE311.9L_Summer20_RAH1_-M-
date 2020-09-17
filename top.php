@@ -3,7 +3,7 @@ session_start();
 include ('config.php');
 include ('function.inc.php');
 
-if (!isset($_SESSION['IS_LOGIN'])){
+if (isset($_SESSION['IS_LOGIN'])){
     redirect('Login.php');
 }
 ?>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['IS_LOGIN'])){
 
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <span class="nav-profile-name">Salman</span>
+                        <span class="nav-profile-name"><?php echo $_SESSION['ADMIN_USER'] ?></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <div class="dropdown-divider"></div>
@@ -82,6 +82,12 @@ if (!isset($_SESSION['IS_LOGIN'])){
                     <a class="nav-link" href="category.php">
                         <i class="mdi mdi-view-headline menu-icon"></i>
                         <span class="menu-title">Category</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user.php">
+                        <i class="mdi mdi-view-headline menu-icon"></i>
+                        <span class="menu-title">Customers</span>
                     </a>
                 </li>
 
