@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2020 at 03:56 PM
+-- Generation Time: Sep 17, 2020 at 04:17 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -69,43 +69,111 @@ INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Table structure for table `coupon_code`
 --
 
-CREATE TABLE `items` (
-  `food_id` int(11) NOT NULL,
-  `food_name` varchar(45) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `coupon_code` (
+  `id` int(11) NOT NULL,
+  `coupon_code` varchar(20) NOT NULL,
+  `coupon_type` enum('P','F') NOT NULL,
+  `coupon_value` int(11) NOT NULL,
+  `cart_min_value` int(11) NOT NULL,
+  `expired_on` date NOT NULL,
+  `status` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `delivery_boy`
 --
 
-CREATE TABLE `orders` (
-  `order_id` int(3) NOT NULL,
-  `to_address` varchar(45) NOT NULL,
-  `payment_type` varchar(45) NOT NULL,
-  `total` int(11) NOT NULL,
-  `status` varchar(45) NOT NULL,
-  `User_user_id` int(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `delivery_boy` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders_has_items`
+-- Table structure for table `dish`
 --
 
-CREATE TABLE `orders_has_items` (
-  `orders_order_id` int(3) NOT NULL,
-  `orders_User_user_id` int(7) NOT NULL,
-  `items_food_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `dish` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `dish` varchar(100) NOT NULL,
+  `dish_detail` text NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dish_details`
+--
+
+CREATE TABLE `dish_details` (
+  `id` int(11) NOT NULL,
+  `dish_id` int(11) NOT NULL,
+  `attribute` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `dish_details_id` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `gst` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_master`
+--
+
+CREATE TABLE `order_master` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `address` text NOT NULL,
+  `total_price` float NOT NULL,
+  `gst` float NOT NULL,
+  `delivery_boy_id` int(11) NOT NULL,
+  `payment_status` int(11) NOT NULL,
+  `order_status` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_status`
+--
+
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL,
+  `order_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -114,21 +182,14 @@ CREATE TABLE `orders_has_items` (
 --
 
 CREATE TABLE `user` (
-  `user_id` int(7) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `user_name` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `phone` int(11) NOT NULL,
   `address` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `address`) VALUES
-(1, 'Syed Salman Reza', 'salman1998', '123qwe', 'syedsalmanreza556@gmail.com', 1709279556, 'Mirpur, Dhaka');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -147,25 +208,46 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `items`
+-- Indexes for table `coupon_code`
 --
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`food_id`);
+ALTER TABLE `coupon_code`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indexes for table `delivery_boy`
 --
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`,`User_user_id`),
-  ADD KEY `fk_orders_User_idx` (`User_user_id`);
+ALTER TABLE `delivery_boy`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders_has_items`
+-- Indexes for table `dish`
 --
-ALTER TABLE `orders_has_items`
-  ADD PRIMARY KEY (`orders_order_id`,`orders_User_user_id`,`items_food_id`),
-  ADD KEY `fk_orders_has_items_items1_idx` (`items_food_id`),
-  ADD KEY `fk_orders_has_items_orders1_idx` (`orders_order_id`,`orders_User_user_id`);
+ALTER TABLE `dish`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dish_details`
+--
+ALTER TABLE `dish_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_master`
+--
+ALTER TABLE `order_master`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -190,39 +272,52 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT for table `coupon_code`
 --
-ALTER TABLE `items`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `coupon_code`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `delivery_boy`
 --
-ALTER TABLE `orders`
-  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `delivery_boy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dish`
+--
+ALTER TABLE `dish`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dish_details`
+--
+ALTER TABLE `dish_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_master`
+--
+ALTER TABLE `order_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_status`
+--
+ALTER TABLE `order_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `fk_orders_User` FOREIGN KEY (`User_user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `orders_has_items`
---
-ALTER TABLE `orders_has_items`
-  ADD CONSTRAINT `fk_orders_has_items_items1` FOREIGN KEY (`items_food_id`) REFERENCES `items` (`food_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_orders_has_items_orders1` FOREIGN KEY (`orders_order_id`,`orders_User_user_id`) REFERENCES `orders` (`order_id`, `User_user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
