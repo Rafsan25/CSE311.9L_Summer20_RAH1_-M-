@@ -31,7 +31,7 @@ $res=mysqli_query($con,$sql);
 ?>
     <div class="card">
         <div class="card-body">
-            <h1 class="grid_title">Category Master</h1>
+            <h1 class="grid_title">Category Manage</h1>
             <a href="manage_category.php" class="add_link">Add Category</a>
             <div class="row grid_box">
 
