@@ -1,8 +1,22 @@
 <?php
 session_start();
-if(isset($_SESSION['admin_sid']) || isset($_SESSION['customer_sid']))
+include ('database.inc.php');
+include ('function.inc.php');
+$msg="";
+if(isset($_POST['Submit']))
 {
-    header("location:index.php");
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+
+    $sql="select * from admin where username='$username' and password='$password'";
+    $res=mysqli_query($con,$sql);
+    if(mysqli_num_rows($res)>0){
+                $row=mysqli_fetch_assoc($res);
+                $_SESSION['IS LOGIN']='yes';
+                redirect(index.php);
+            }
+    else
+        $msg="Please Enter Valid Login Details";
 }
 else{
     ?>
@@ -48,13 +62,15 @@ else{
                         <span class="focus-input100"></span>
                     </div>
                     <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Sign in
+                        <button type="Submit" class="login100-form-btn" value = "Sign in" name="Submit">
+                        
+                        Sign in
+
                         </button>
                     </div>
 
@@ -69,9 +85,9 @@ else{
                         </a>
                     </div>
                 </form>
-
                 <div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
             </div>
+            <div class="login_msg"><<?php echo $msg?> </div>
         </div>
     </div>
 
