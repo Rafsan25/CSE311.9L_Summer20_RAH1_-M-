@@ -1,5 +1,9 @@
 <?php
 include('top.php');
+if(isset($_POST['submit'])){
+    $category= get_safe_value($_POST['category']);
+    $order_number= get_safe_value($_POST['order_number']);
+}
 ?>
 <div class="row">
 			<h1 class="grid_title ml10 ml15">Manage Category</h1>
@@ -13,7 +17,7 @@ include('top.php');
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Order Number</label>
-                      <input type="email" class="form-control"  placeholder="Order Number" name="order_number">
+                      <input type="text" class="form-control"  placeholder="Order Number" name="order_number">
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>

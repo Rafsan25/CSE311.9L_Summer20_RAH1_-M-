@@ -5,8 +5,8 @@ include ('function.inc.php');
 $msg="";
 if(isset($_POST['submit']))
 {
-    $username=$_POST['username'];
-    $password=$_POST['password'];
+    $username=get_safe_value($_POST['username']);
+    $password=get_safe_value($_POST['password']);
 
     $sql="select * from admin where username='$username' and password='$password'";
     $res=mysqli_query($con,$sql);

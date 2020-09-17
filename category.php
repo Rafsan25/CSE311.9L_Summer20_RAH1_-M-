@@ -8,8 +8,8 @@ include('top.php');
 // the status query will update the status
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
-    $type=($_GET['type']);
-    $id=($_GET['id']);
+    $type=get_safe_value($_GET['type']);
+    $id=get_safe_value($_GET['id']);
     if($type=='delete'){
         mysqli_query($con,"delete from category where id='$id'");
         redirect('category.php');

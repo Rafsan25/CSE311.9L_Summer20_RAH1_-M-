@@ -8,6 +8,12 @@ function prx($arr){
     print_r($arr);
     die();
 }
+function get_safe_value($str){
+    global  $con;
+    $str=mysqli_real_escape_string($con,$str);
+    return $str;
+}
+
 function redirect($link){
     ?>
     <script>
