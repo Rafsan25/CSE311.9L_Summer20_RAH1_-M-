@@ -1,17 +1,28 @@
 <?php
 include('top.php');
 
-//Query for Action Delete.
-// When we press Delete from category page it will return two variable {type and id}.
-// Query will check if the type==delete.
-// If the type is 'delete' it will pass the id to the sql query in category table.
+//Query for Action = Delete, Status(Active/Deactive).
+// When we press Action from category page it will return two variable {type and id}.
+// Query will check if the type==(delete || active || deactive).
+// If the type is 'delete', 'active', deactive it will pass the id to the sql query in category table.
 // The delete query will delete the data of that specific id.
+// the status query will update the status
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
     $type=$_GET['type'];
     $id=$_GET['id'];
+    // Query for delete
     if($type=='delete'){
         mysqli_query($con,"delete from category where id='$id'");
+        redirect('category.php');
+    }
+    //Query for status update
+    if($type=='active' || $type=='deactive'){
+        $status=1;
+        if($type=='deactive'){
+            $status=0;
+        }
+        mysqli_query($con,"update category set status='$status' where id='$id'");
         redirect('category.php');
     }
 }
@@ -49,7 +60,18 @@ $res=mysqli_query($con,$sql);
                                 <td>
                                     <a href=""><label class="badge badge-success">Edit</label> </a>
                                     &nbsp;
-                                    <a href=""><label class="badge badge-danger">Pending</label> </a>
+                                    <?php
+                                    if($row['status']==1){
+                                        ?>
+                                        <a href="?id=<?php echo $row['id']?> & type=deactive"><label class="badge badge-danger">Active</label> </a>
+                                        <?php
+                                    }else {
+                                        ?>
+                                        <a href="?id=<?php echo $row['id']?> & type=active"><label class="badge badge-info">Deactive</label> </a>
+                                        <?php
+                                    }
+
+                                    ?>
                                     &nbsp;
                                     <a href="?id=<?php echo $row['id']?> & type=delete"><label class="badge badge-danger delete_red">Delete</label> </a>
                                 </td>
