@@ -8,7 +8,7 @@ define('DB_NAME', 'mydb');
 
 /*connect to MySQL database */
 $con = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-echo ("Connected");
+//echo ("Connected");
 
 // Check connection
 if($con == false){
