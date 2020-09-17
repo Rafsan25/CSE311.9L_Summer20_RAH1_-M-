@@ -1,6 +1,12 @@
 <?php
 include('top.php');
-//Query for Action Delete
+
+//Query for Action Delete.
+// When we press Delete from category page it will return two variable {type and id}.
+// Query will check if the type==delete.
+// If the type is 'delete' it will pass the id to the sql query in category table.
+// The delete query will delete the data of that specific id.
+
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
     $type=$_GET['type'];
     $id=$_GET['id'];
