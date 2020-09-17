@@ -29653,9 +29653,14 @@ div.tagsinput span.tag a {
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
 
 .login_msg{color: red; marker-top:10px;}
-
+/* Margin from bottom 20px * -category.php*/
 .grid_title{margin-bottom:20px;}
+/* Color change in action */
 .delete_red{background-color:red !important;}
+/* Margin from top 20px -category.php*/
 .grid_box{margin-top: 20px;}
+/* Front size class -category.php (Add category)*/
 .add_link{font-size: 18px;}
+/* Margin for Manage Category Title */
+.ml15{margin-left: 15px;}
 
