@@ -1,5 +1,16 @@
 <?php
 include('top.php');
+//Query for Action Delete
+if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
+    $type=$_GET['type'];
+    $id=$_GET['id'];
+    if($type=='delete'){
+        mysqli_query($con,"delete from category where id='$id'");
+        redirect('category.php');
+    }
+}
+
+//Getting data from database
 $sql="select * from category order by order_number";
 $res=mysqli_query($con,$sql);
 
@@ -15,9 +26,9 @@ $res=mysqli_query($con,$sql);
                             <thead>
                             <tr>
                                 <th width="10%">S. No</th>
-                                <th width="45%">Category</th>
+                                <th width="50%">Category</th>
                                 <th width="15%">Order Number</th>
-                                <th width="30%">Actions</th>
+                                <th width="25%">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,7 +40,13 @@ $res=mysqli_query($con,$sql);
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $row['category']?></td>
                                 <td><?php echo $row['order_number']?></td>
-                                <td></td>
+                                <td>
+                                    <a href=""><label class="badge badge-success">Edit</label> </a>
+                                    &nbsp;
+                                    <a href=""><label class="badge badge-danger">Pending</label> </a>
+                                    &nbsp;
+                                    <a href="?id=<?php echo $row['id']?> & type=delete"><label class="badge badge-danger delete_red">Delete</label> </a>
+                                </td>
                             </tr>
                             <?php
                                 $i++;
