@@ -29667,4 +29667,5 @@ div.tagsinput span.tag a {
 .error{color: red;};
 /* Margin for error meg */
 .mt8{margin-top: 8px;}
-
+/* Cursor */
+.hand_cursor{cursor:pointer;}

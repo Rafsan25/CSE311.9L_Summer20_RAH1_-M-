@@ -56,21 +56,21 @@ $res=mysqli_query($con,$sql);
                                         <td><?php echo $row['category']?></td>
                                         <td><?php echo $row['order_number']?></td>
                                         <td>
-                                            <a href="manage_category.php?id=<?php echo $row['id']?>"><label class="badge badge-success">Edit</label></a>&nbsp;
+                                            <a href="manage_category.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
                                             <?php
                                             if($row['status']==1){
                                                 ?>
-                                                <a href="?id=<?php echo $row['id']?>&type=deactive"><label class="badge badge-danger">Active</label></a>
+                                                <a href="?id=<?php echo $row['id']?>&type=deactive"><label class="badge badge-danger hand_cursor">Active</label></a>
                                                 <?php
                                             }else{
                                                 ?>
-                                                <a href="?id=<?php echo $row['id']?>&type=active"><label class="badge badge-info">Deactive</label></a>
+                                                <a href="?id=<?php echo $row['id']?>&type=active"><label class="badge badge-info hand_cursor">Deactive</label></a>
                                                 <?php
                                             }
 
                                             ?>
                                             &nbsp;
-                                            <a href="?id=<?php echo $row['id']?>&type=delete"><label class="badge badge-danger delete_red">Delete</label></a>
+                                            <a href="?id=<?php echo $row['id']?>&type=delete"><label class="badge badge-danger delete_red hand_cursor">Delete</label></a>
                                         </td>
 
                                     </tr>
