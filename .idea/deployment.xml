@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/">
+        <serverdata>
+          <mappings>
+            <mapping deploy="\" local="$PROJECT_DIR$" web="CSE311.9L_Summer20_RAH1_-M-/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
