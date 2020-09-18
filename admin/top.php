@@ -90,6 +90,12 @@ if (!isset($_SESSION['IS_LOGIN'])){
                         <span class="menu-title">Customers</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="delivery_boy.php">
+                        <i class="mdi mdi-view-headline menu-icon"></i>
+                        <span class="menu-title">Delivery Boy</span>
+                    </a>
+                </li>
 
 
             </ul>
