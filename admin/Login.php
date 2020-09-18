@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "config.php";
-include ('function.inc.php');
+require_once "../config.php";
+include ('../function.inc.php');
 $msg="";
 if(isset($_POST['submit']))
 {

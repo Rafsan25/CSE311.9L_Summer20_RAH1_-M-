@@ -1,7 +1,7 @@
 <?php
 include('top.php');
 
-require_once "config.php";
+require_once "../config.php";
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['user_id']) && $_GET['user_id']>0){
     $type=get_safe_value($_GET['type']);
