@@ -2,10 +2,29 @@
 session_start();
 include ('../config.php');
 include ('../function.inc.php');
+include('../constant.inc.php');
+
+$curStr=$_SERVER['REQUEST_URI'];
+$curArr=explode('/',$curStr);
+$cur_path=$curArr[count($curArr)-1];
+
 
 if (!isset($_SESSION['IS_LOGIN'])){
     redirect('Login.php');
 }
+$page_title='';
+if($cur_path=='' || $cur_path=='index.php'){
+	$page_title='Dashboard';
+}elseif($cur_path=='category.php' || $cur_path=='manage_category.php'){
+	$page_title='Manage Category';
+}elseif($cur_path=='user.php' || $cur_path=='manage_user.php'){
+	$page_title='Manage User';
+}elseif($cur_path=='delivery_boy.php' || $cur_path=='manage_delivery_boy.php'){
+	$page_title='Manage Delivery Boy';
+}elseif($cur_path=='coupon_code.php' || $cur_path=='manage_coupon_code.php'){
+	$page_title='Manage Coupon Code';
+}elseif($cur_path=='dish.php' || $cur_path=='manage_dish.php'){
+	$page_title='Manage Dish';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +32,7 @@ if (!isset($_SESSION['IS_LOGIN'])){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Online Food Ordering Admin</title>
+    <title><?php echo $page_title?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
@@ -94,6 +113,18 @@ if (!isset($_SESSION['IS_LOGIN'])){
                     <a class="nav-link" href="delivery_boy.php">
                         <i class="mdi mdi-view-headline menu-icon"></i>
                         <span class="menu-title">Delivery Boy</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="coupon_code.php">
+                        <i class="mdi mdi-view-headline menu-icon"></i>
+                        <span class="menu-title">Coupon Code</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dish.php">
+                        <i class="mdi mdi-view-headline menu-icon"></i>
+                        <span class="menu-title">Dish</span>
                     </a>
                 </li>
 
