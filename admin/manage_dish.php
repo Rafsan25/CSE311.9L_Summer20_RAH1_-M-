@@ -1,7 +1,6 @@
 <?php 
 include('top.php');
 
-
 $msg="";
 $category_id="";
 $dish="";
@@ -51,8 +50,8 @@ if(isset($_POST['submit'])){
 				$image_error="Invalid image format";
 			}else{
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-				move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$image);
-				mysqli_query($con,"insert into dish(category_id,dish,dish_detail,status,added_on,image,type) values('$category_id','$dish','$dish_detail',1,'$added_on','$image','$food_type')");
+				move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$_FILES['image']['name']);
+				mysqli_query($con,"insert into dish(category_id,dish,dish_detail,status,added_on,image) values('$category_id','$dish','$dish_detail',1,'$added_on','$image')");
 				$did=mysqli_insert_id($con);
 				
 				$attributeArr=$_POST['attribute'];
@@ -76,7 +75,7 @@ if(isset($_POST['submit'])){
 					$image_error="Invalid image format";
 				}else{
 					$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-					move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$image);
+					move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$_FILES['image']['name']);
 					$image_condition=", image='$image'";
 					
 					$oldImageRow=mysqli_fetch_assoc(mysqli_query($con,"select image from dish where id='$id'"));
