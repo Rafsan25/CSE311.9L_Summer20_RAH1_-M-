@@ -44,6 +44,8 @@ if($cur_path=='' || $cur_path=='index.php'){
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    // For Dark-Mode
+    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
 </head>
 <body class="sidebar-light">
 <div class="container-scroller">
