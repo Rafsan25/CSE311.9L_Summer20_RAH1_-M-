@@ -27,7 +27,7 @@ include('constant.inc.php');
                             <h1 class="animated">Order Food Online</h1>
                             <h3 class="animated">The Natural Choice</h3>
                             <div class="slider-btn mt-90">
-                                <a class="animated" href="product-details.html">Order Now</a>
+                                <a class="animated" href="shop.php">Order Now</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ include('constant.inc.php');
                             <h1 class="animated">Order Food Online</h1>
                             <h3 class="animated">The Natural Choice</h3>
                             <div class="slider-btn mt-90">
-                                <a class="animated" href="product-details.html">Order Now</a>
+                                <a class="animated" href="shop.php">Order Now</a>
                             </div>
                         </div>
                     </div>
