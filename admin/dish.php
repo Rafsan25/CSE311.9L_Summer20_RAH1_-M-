@@ -15,7 +15,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 
 }
 
-$sql="select dish.*,category.category from dish,category where dish.category_id=category_id order by id desc";
+$sql="select dish.*,category.category from dish,category where dish.category_id=category.id order by dish.id desc";
 $res=mysqli_query($con,$sql);
 
 ?>
