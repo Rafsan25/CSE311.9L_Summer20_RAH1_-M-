@@ -1,9 +1,15 @@
+<?php
+session_start();
+include ('config.php');
+include ('function.inc.php');
+include('constant.inc.php');
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Billy - Food & Drink eCommerce Bootstrap4 Template</title>
+    <title><?php echo FRONT_SITE_NAME ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -27,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-12 col-sm-4">
                     <div class="welcome-area">
-                        <p>Default welcome msg! </p>
+
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-12 col-sm-8">
@@ -37,10 +43,9 @@
 
                             <li class="top-hover"><a href="#">Setting  <i class="ion-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="wishlist.html">Wishlist  </a></li>
-                                    <li><a href="login-register.html">Login</a></li>
-                                    <li><a href="login-register.html">Register</a></li>
-                                    <li><a href="my-account.html">my account</a></li>
+                                    <li><a href="profile.php">Profile</a></li>
+                                    <li><a href="order_history.php">Order History</a></li>
+                                    <li><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -54,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="index.php">
                             <img alt="" src="assets/img/logo/logo.png">
                         </a>
                     </div>
@@ -62,7 +67,7 @@
                 <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                     <div class="header-middle-right f-right">
                         <div class="header-login">
-                            <a href="login-register.html">
+                            <a href="login-register.php">
                                 <div class="header-icon-style">
                                     <i class="icon-user icons"></i>
                                 </div>
@@ -78,51 +83,14 @@
                             <a href="#">
                                 <div class="header-icon-style">
                                     <i class="icon-handbag icons"></i>
-                                    <span class="count-style">02</span>
+                                    <span class="count-style">0</span>
                                 </div>
                                 <div class="cart-text">
                                     <span class="digit">My Cart</span>
-                                    <span class="cart-digit-bold">$209.00</span>
+                                    <span class="cart-digit-bold"></span>
                                 </div>
                             </a>
-                            <div class="shopping-cart-content">
-                                <ul>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Phantom Remote </a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ion ion-close"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Phantom Remote</a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ion ion-close"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-total">
-                                    <h4>Shipping : <span>$20.00</span></h4>
-                                    <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                </div>
-                                <div class="shopping-cart-btn">
-                                    <a href="cart-page.html">view cart</a>
-                                    <a href="checkout.html">checkout</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -136,9 +104,9 @@
                     <div class="main-menu">
                         <nav>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">about</a></li>
-                                <li><a href="contact.html">contact us</a></li>
+                                <li><a href="shop.php">Shop</a></li>
+                                <li><a href="about_us.php">About Us</a></li>
+                                <li><a href="contact_us.php">Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -154,9 +122,9 @@
                     <div class="mobile-menu">
                         <nav id="mobile-menu-active">
                             <ul class="menu-overflow" id="nav">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="shop.php">Shop</a></li>
+                                <li><a href="about_us.php">About Us</a></li>
+                                <li><a href="contact_us.php">Contact US</a></li>
                             </ul>
                         </nav>
                     </div>
