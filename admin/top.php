@@ -23,8 +23,9 @@ if($cur_path=='' || $cur_path=='index.php'){
 	$page_title='Manage Delivery Boy';
 }elseif($cur_path=='coupon_code.php' || $cur_path=='manage_coupon_code.php'){
 	$page_title='Manage Coupon Code';
-}elseif($cur_path=='dish.php' || $cur_path=='manage_dish.php'){
-	$page_title='Manage Dish';
+}elseif($cur_path=='dish.php' || $cur_path=='manage_dish.php') {
+    $page_title = 'Manage Dish';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
