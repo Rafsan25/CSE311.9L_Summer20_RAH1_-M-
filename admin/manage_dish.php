@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('top.php');
 
 $msg="";
@@ -6,7 +6,6 @@ $category_id="";
 $dish="";
 $dish_detail="";
 $image="";
-$type="";
 $id="";
 $image_status='required';
 $image_error="";
@@ -15,7 +14,6 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	$row=mysqli_fetch_assoc(mysqli_query($con,"select * from dish where id='$id'"));
 	$category_id=$row['category_id'];
 	$dish=$row['dish'];
-	$type=$row['type'];
 	$dish_detail=$row['dish_detail'];
 	$image=$row['image'];
 	$image_status='';
@@ -33,7 +31,6 @@ if(isset($_POST['submit'])){
 	$category_id=get_safe_value($_POST['category_id']);
 	$dish=get_safe_value($_POST['dish']);
 	$dish_detail=get_safe_value($_POST['dish_detail']);
-	$food_type=get_safe_value($_POST['type']);
 	$added_on=date('Y-m-d h:i:s');
 	
 	if($id==''){
@@ -50,19 +47,17 @@ if(isset($_POST['submit'])){
 				$image_error="Invalid image format";
 			}else{
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-				move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$image);
 				mysqli_query($con,"insert into dish(category_id,dish,dish_detail,status,added_on,image) values('$category_id','$dish','$dish_detail',1,'$added_on','$image')");
 				$did=mysqli_insert_id($con);
 				
 				$attributeArr=$_POST['attribute'];
 				$priceArr=$_POST['price'];
-				$statusArr=$_POST['status'];
 				
 				foreach($attributeArr as $key=>$val){
 					$attribute=$val;
 					$price=$priceArr[$key];
-					$status=$statusArr[$key];
-					mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price','$status','$added_on')");
+					mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')");
 					//echo "insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')";
 				}
 				
@@ -75,7 +70,7 @@ if(isset($_POST['submit'])){
 					$image_error="Invalid image format";
 				}else{
 					$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-					move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$_FILES['image']['name']);
+					move_uploaded_file($_FILES['image']['tmp_name'],SERVER_DISH_IMAGE.$image);
 					$image_condition=", image='$image'";
 					
 					$oldImageRow=mysqli_fetch_assoc(mysqli_query($con,"select image from dish where id='$id'"));
@@ -85,23 +80,22 @@ if(isset($_POST['submit'])){
 				}
 			}
 			if($image_error==''){
-				$sql="update dish set category_id='$category_id', dish='$dish' , dish_detail='$dish_detail',type='$food_type' $image_condition where id='$id'";
+				$sql="update dish set category_id='$category_id', dish='$dish' , dish_detail='$dish_detail' $image_condition where id='$id'";
 				mysqli_query($con,$sql);
+
 				$attributeArr=$_POST['attribute'];
 				$priceArr=$_POST['price'];
-				$statusArr=$_POST['status'];
 				$dishDetailsIdArr=$_POST['dish_details_id'];
 				
 				foreach($attributeArr as $key=>$val){
 					$attribute=$val;
 					$price=$priceArr[$key];
-					$status=$statusArr[$key];
 					
 					if(isset($dishDetailsIdArr[$key])){
 						$did=$dishDetailsIdArr[$key];
-						mysqli_query($con,"update dish_details set attribute='$attribute',price='$price',status='$status' where id='$did'");
+						mysqli_query($con,"update dish_details set attribute='$attribute',price='$price' where id='$did'");
 					}else{
-						mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$id','$attribute','$price','$status','$added_on')");
+						mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$id','$attribute','$price',1,'$added_on')");
 					}
 					
 					
@@ -114,8 +108,7 @@ if(isset($_POST['submit'])){
 		}
 	}
 }
-$res_category=mysqli_query($con,"select * from category where status='1' order by category asc");
-$arrType=array("veg","non-veg");
+$res_category=mysqli_query($con,"select * from category where status='1' order by category asc")
 ?>
 <div class="row">
 			<h1 class="grid_title ml10 ml15">Dish</h1>
@@ -144,22 +137,6 @@ $arrType=array("veg","non-veg");
                       <input type="text" class="form-control" placeholder="dish" name="dish" required value="<?php echo $dish?>">
 					  <div class="error mt8"><?php echo $msg?></div>
                     </div>
-					<div class="form-group">
-                      <label for="exampleInputName1">Type</label>
-                      <select class="form-control" name="type" required>
-						<option value="">Select Type</option>
-						<?php 
-						foreach($arrType as $list){
-							if($list==$type){
-								echo "<option value='$list' selected>".strtoupper($list)."</option>";
-							}else{
-								echo "<option value='$list'>".strtoupper($list)."</option>";
-							}
-						}
-						?>
-					  </select>
-					  
-                    </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3" required>Dish Detail</label>
                       <textarea name="dish_detail" class="form-control" placeholder="Dish Detail"><?php echo $dish_detail?></textarea>
@@ -173,19 +150,13 @@ $arrType=array("veg","non-veg");
 						<label for="exampleInputEmail3">Dish Attributes</label>
 					<?php if($id==0){?>
 						<div class="row">
-							<div class="col-4">
+							<div class="col-5">
 								<input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required>
 							</div>
-							<div class="col-3">
+							<div class="col-5">
 								<input type="text" class="form-control" placeholder="Price" name="price[]" required>
 							</div>
-							<div class="col-3">
-								<select required name="status[]" class="form-control">
-									<option value="">Select Status</option>
-									<option value="1">Active</option>
-									<option value="0">Deactive</option>
-								</select>
-							</div>
+
 						</div>
 					<?php } else{
 						$dish_details_res=mysqli_query($con,"select * from dish_details where dish_id='$id'");
@@ -193,30 +164,14 @@ $arrType=array("veg","non-veg");
 						while($dish_details_row=mysqli_fetch_assoc($dish_details_res)){
 						?>
 						<div class="row mt8">
-							<div class="col-4">
+							<div class="col-5">
 								<input type="hidden" name="dish_details_id[]" value="<?php echo $dish_details_row['id']?>">
 								<input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required value="<?php echo $dish_details_row['attribute']?>">
 							</div>
-							<div class="col-3">
+							<div class="col-5">
 								<input type="text" class="form-control" placeholder="Price" name="price[]" required  value="<?php echo $dish_details_row['price']?>">
 							</div>
-							<div class="col-3">
-								<select required name="status[]" class="form-control">
-									<option value="">Select Status</option>
-									<?php
-									if($dish_details_row['status']==1){
-									?>
-										<option value="1" selected>Active</option>
-										<option value="0">Deactive</option>
-									<?php } ?>
-									<?php
-									if($dish_details_row['status']==0){
-									?>
-										<option value="1">Active</option>
-										<option value="0" selected>Deactive</option>
-									<?php } ?>
-								</select>
-							</div>
+
 							<?php if($ii!=1){
 							?>
 							<div class="col-2"><button type="button" class="btn badge-danger mr-2" onclick="remove_more_new('<?php echo $dish_details_row['id']?>')">Remove</button></div>
@@ -245,7 +200,7 @@ $arrType=array("veg","non-veg");
 			var add_more=jQuery('#add_more').val();
 			add_more++;
 			jQuery('#add_more').val(add_more);
-			var html='<div class="row mt8" id="box'+add_more+'"><div class="col-4"><input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required></div><div class="col-3"><input type="text" class="form-control" placeholder="Price" name="price[]" required></div><div class="col-3"><select class="form-control"  required name="status[]"><option value="">Select Status</option><option value="1">Active</option><option value="0">Deactive</option></select></div><div class="col-2"><button type="button" class="btn badge-danger mr-2" onclick=remove_more("'+add_more+'")>Remove</button></div></div>';
+            var html='<div class="row mt8" id="box'+add_more+'"><div class="col-5"><input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required></div><div class="col-5"><input type="text" class="form-control" placeholder="Price" name="price[]" required></div><div class="col-2"><button type="button" class="btn badge-danger mr-2" onclick=remove_more("'+add_more+'")>Remove</button></div></div>';
 			jQuery('#dish_box1').append(html);
 		}
 		
