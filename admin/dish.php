@@ -15,7 +15,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 
 }
 
-$sql="select dish.* ,category.category from dish,where dish.category_id=category_id order by id desc";
+$sql="select dish.*,category.category from dish,category where dish.category_id=category_id order by id desc";
 $res=mysqli_query($con,$sql);
 
 ?>
@@ -45,11 +45,9 @@ $res=mysqli_query($con,$sql);
                                 ?>
                                 <tr>
                                     <td><?php echo $i?></td>
-                                    <td><?php echo $row['category_id']?></td>
+                                    <td><?php echo $row['category']?></td>
                                     <td><?php echo $row['dish']?></td>
                                     <td><?php echo $row['image']?></td>
-
-
                                     <td>
                                         <?php
                                         $dateStr=strtotime($row['added_on']);
