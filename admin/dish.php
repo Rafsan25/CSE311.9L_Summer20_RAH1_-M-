@@ -14,6 +14,9 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
     }
 
 }
+//Join Table- We selected All from dish table and category from category table
+//Condition Where category_id from dish table == id from category table
+// Order By id from dish table (DESC)
 
 $sql="select dish.*,category.category from dish,category where dish.category_id=category.id order by dish.id desc";
 $res=mysqli_query($con,$sql);
@@ -55,7 +58,7 @@ $res=mysqli_query($con,$sql);
                                         ?>
                                     </td>
                                     <td>
-                                        <a href="manage_delivery_boy.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+                                        <a href="manage_dish.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
                                         <?php
                                         if($row['status']==1){
                                             ?>
