@@ -6,6 +6,7 @@ $dish="";
 $dish_detail="";
 $image="";
 $id="";
+// Image is required for add page
 $image_status='required';
 $image_error="";
 if(isset($_GET['id']) && $_GET['id']>0){
@@ -15,6 +16,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	$dish=$row['dish'];
 	$dish_detail=$row['dish_detail'];
 	$image=$row['image'];
+	// Image is not required for edit page
 	$image_status='';
 }
 

@@ -50,7 +50,7 @@ $res=mysqli_query($con,$sql);
                                     <td><?php echo $i?></td>
                                     <td><?php echo $row['category']?></td>
                                     <td><?php echo $row['dish']?></td>
-                                    <td><?php echo $row['image']?></td>
+                                    <td><a target="_blank" href="<?php echo SITE_DISH_IMAGE.$row['image'] ?>"><img src="<?php echo SITE_DISH_IMAGE.$row['image'] ?>"/></a></td>
                                     <td>
                                         <?php
                                         $dateStr=strtotime($row['added_on']);
