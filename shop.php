@@ -1,5 +1,11 @@
 <?php
 include ("header.php");
+$cat_dish='';
+$cat_dish_arr=array();
+if(isset($_GET['cat_dish'])){
+    $cat_dish=get_safe_value($_GET['cat_dish']);
+    $cat_dish_arr=array_filter(explode(':',$cat_dish));
+}
 ?>
 <div class="breadcrumb-area gray-bg">
     <div class="container">
@@ -180,6 +186,10 @@ include ("header.php");
 
                 </div>
             </div>
+            <?php
+            $cat_id=0;
+            $cat_res=mysqli_query($con,"select * from category where status=1 order by order_number desc")
+            ?>
             <div class="col-lg-3">
                 <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
                     <div class="shop-widget">
@@ -189,6 +199,21 @@ include ("header.php");
                                 <li> <a href="#">Vegetables</a> </li>
                                 <li> <a href="#">Fruits</a></li>
                                 <li> <a href="#">Red Meat</a></li>
+                                 <?php 
+                                        while($cat_row=mysqli_fetch_assoc($cat_res)){
+                                            $class="selected";
+                                            if($cat_id==$cat_row['id']){
+                                                $class="active";
+                                            }
+                                            $is_checked='';
+                                            if(in_array($cat_row['id'],$cat_dish_arr)){
+                                                $is_checked="checked='checked'";
+                                            }
+                                            
+                                            echo "<li> <input $is_checked onclick=set_checkbox('".$cat_row['id']."') type='checkbox' class='cat_checkbox' name='cat_arr[]' value='".$cat_row['id']."'/>".$cat_row['category']."</li>";  
+
+                                        }
+                                        ?>
                             </ul>
                         </div>
                     </div>
