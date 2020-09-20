@@ -225,7 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body {background-color: coral;}
+        body {background-color: rebeccapurple;}
         h2 {color: yellow;}
         p {color: whitesmoke;}
         h2 {text-align: center;}
