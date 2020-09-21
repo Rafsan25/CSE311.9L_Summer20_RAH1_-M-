@@ -48,4 +48,9 @@ function send_email($email,$html,$subject){
         //echo "Error occur";
     }
 }
+function rand_str(){
+    $str=str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+    return $str=substr($str,0,15);
+    
+}
 ?>

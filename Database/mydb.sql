@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2020 at 04:17 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Sep 21, 2020 at 08:52 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -114,6 +114,15 @@ CREATE TABLE `dish` (
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dish`
+--
+
+INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `status`, `added_on`) VALUES
+(1, 1, 'Dumplings', 'Cabbage filled Chinese dumplings', '', 1, '2020-09-16 15:29:18'),
+(6, 2, 'Fried Dumpings', 'Beef filled dumplings ', '285880405_Dumplings.jpg', 1, '2020-09-19 12:29:11'),
+(7, 2, 'Gulab Jamun', 'v', '367917297_IMG_8253.jpeg', 1, '2020-09-19 12:40:08');
+
 -- --------------------------------------------------------
 
 --
@@ -128,6 +137,25 @@ CREATE TABLE `dish_details` (
   `status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dish_details`
+--
+
+INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `added_on`) VALUES
+(1, 0, 'full', 290, 1, '2020-09-19 11:27:21'),
+(2, 0, 'full', 290, 1, '2020-09-19 11:33:17'),
+(3, 0, 'full', 290, 1, '2020-09-19 11:35:39'),
+(4, 0, 'half ', 150, 1, '2020-09-19 11:35:39'),
+(5, 0, 'full', 290, 0, '2020-09-19 11:43:13'),
+(6, 0, 'full', 290, 0, '2020-09-19 11:47:55'),
+(7, 0, 'full', 290, 1, '2020-09-19 11:48:26'),
+(8, 0, 'full', 290, 1, '2020-09-19 11:49:12'),
+(9, 3, 'full', 290, 1, '2020-09-19 12:15:04'),
+(10, 4, 'full', 290, 1, '2020-09-19 12:17:02'),
+(11, 5, 'full', 290, 1, '2020-09-19 12:19:45'),
+(12, 6, 'full', 290, 1, '2020-09-19 12:29:11'),
+(13, 7, 'full', 290, 1, '2020-09-19 12:40:08');
 
 -- --------------------------------------------------------
 
@@ -188,8 +216,17 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `phone` int(11) NOT NULL,
+  `email_verify` int(11) NOT NULL,
+  `rand_str` varchar(20) NOT NULL,
   `address` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `email_verify`, `rand_str`, `address`) VALUES
+(1, 'AHMED', 'aaa3', 'PHPMYADMIN', 'ashfaq.ahmed@northsouth.edu', 1950035131, 0, '', '10/12,TAJMAHAL ROAD,MDPUR');
 
 --
 -- Indexes for dumped tables
@@ -287,13 +324,13 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
@@ -317,7 +354,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

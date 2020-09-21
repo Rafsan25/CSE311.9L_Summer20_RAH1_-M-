@@ -33,22 +33,23 @@ include('constant.inc.php');
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-12 col-sm-4">
                     <div class="welcome-area">
-
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-12 col-sm-8">
                     <div class="account-curr-lang-wrap f-right">
-                        <ul>
-
-
-                            <li class="top-hover"><a href="#">Setting  <i class="ion-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="profile.php">Profile</a></li>
-                                    <li><a href="order_history.php">Order History</a></li>
-                                    <li><a href="logout.php">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <?php
+                            if(isset($_SESSION['FOOD_USER_NAME'])){
+                            ?>  
+                            <ul>
+                                <li class="top-hover"><a href="#"><?php echo "Welcome ".$_SESSION['FOOD_USER_NAME'];?>  <i class="ion-chevron-down"></i></a>
+                                    <ul>
+                                        <li><a href="profile.php">Profile  </a></li>
+                                        <li><a href="order_history.php">Order History</a></li>
+                                        <li><a href="logout.php">Logout</a></li>
+                                    </ul>
+                                 </li>
+                           </ul>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -67,14 +68,22 @@ include('constant.inc.php');
                 <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                     <div class="header-middle-right f-right">
                         <div class="header-login">
-                            <a href="login-register.php">
-                                <div class="header-icon-style">
-                                    <i class="icon-user icons"></i>
-                                </div>
-                                <div class="login-text-content">
-                                    <p>Register <br> or <span>Sign in</span></p>
-                                </div>
-                            </a>
+                            <?php
+                                    if(!isset($_SESSION['FOOD_USER_NAME'])){
+                                        ?>
+                                    <a href="login-register.php">
+                                        <div class="header-icon-style">
+                                            <i class="icon-user icons header_icon"></i>
+                                        </div>
+                                        <div class="login-text-content header_icon">
+                                            
+                                                <p>Register <br> or <span>Sign in</span></p>
+                                                
+                                        </div>
+                                    </a>
+                                    <?php
+                                            }
+                                            ?>
                         </div>
                         <div class="header-wishlist">
                             &nbsp;
