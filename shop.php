@@ -26,15 +26,19 @@ if(isset($_GET['cat_dish'])){
                 $product_sql= "SELECT * FROM dish WHERE status=1";
                 if(isset($_Get['cat_id']) && $_Get['cat_id']>0){
                     $cat_id=$_Get['cat_id'];
+                $product_sql.=" AND category_id='$cat_id' ";
 
                 }
                 $product_sql.=" ORDER BY dish DESC";
                 $product_res=mysqli_query($con,$product_sql);
+                $product_count=mysqli_num_rows($product_res);
                 ?>
 
 
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
+                            <?php
+                                if($product_count>0){?>
                         <div class="row">
                             <?php
                             //Added While loop for fetching row data.
@@ -58,6 +62,9 @@ if(isset($_GET['cat_dish'])){
                             </div>
                             <?php } ?>
                         </div>
+                        <?php } else{
+                                    echo "No Dish Found";
+                                }?>
                     </div>
 
                 </div>
