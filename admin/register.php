@@ -3,8 +3,8 @@
 require_once "../config.php";
 
 // Define variables and initialize with null string
-$name = $user_name = $password = $confirm_password =$email= $phone= $address="";
-$name_err = $user_name_err = $password_err = $confirm_password_err =$email_err= $phone_err= $address_err= "";
+$name=$username= $password = $confirm_password =$email="";
+$name_err = $username_err = $password_err = $confirm_password_err =$email_err= "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name_err = "Please enter a name.";
     } else {
         // Prepare a select statement
-        $sql = "SELECT user_id FROM user WHERE name = ?";
+        $sql = "SELECT id FROM admin WHERE name = ?";
 
         if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -39,18 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Processing form data when form is submitted
     // Validate username
-    if (empty(trim($_POST["user_name"]))) {
-        $user_name_err = "Please enter a username.";
+    if (empty(trim($_POST["username"]))) {
+        $username_err = "Please enter a username.";
     } else {
         // Prepare a select statement
-        $sql = "SELECT user_id FROM user WHERE user_name = ?";
+        $sql = "SELECT id FROM admin WHERE username = ?";
 
         if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
             // Set parameters
-            $param_user_name = trim($_POST["user_name"]);
+            $param_username = trim($_POST["username"]);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -58,9 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_store_result($stmt);
 
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    $user_name_err = "This username is already taken.";
+                    $username_err = "This username is already taken.";
                 } else {
-                    $user_name = trim($_POST["user_name"]);
+                    $username = trim($_POST["username"]);
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_err = "Please enter an email.";
     } else {
         // Prepare a select statement
-        $sql = "SELECT user_id FROM user WHERE email = ?";
+        $sql = "SELECT id FROM admin WHERE email = ?";
 
         if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -120,82 +120,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (empty(trim($_POST["phone"]))) {
-        $phone_err = "Please enter a phone number.";
-    } else {
-        // Prepare a select statement
-        $sql = "SELECT user_id FROM user WHERE phone = ?";
-
-        if ($stmt = mysqli_prepare($con, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "i", $param_phone);
-
-            // Set parameters
-            $param_phone = trim($_POST["phone"]);
-
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    $phone_err = "This phone number is already exists.";
-                } else {
-                    $phone = trim($_POST["phone"]);
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    if (empty(trim($_POST["address"]))) {
-        $address_err = "Please enter an address.";
-    } else {
-        // Prepare a select statement
-        $sql = "SELECT user_id FROM user WHERE address = ?";
-
-        if ($stmt = mysqli_prepare($con, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_address);
-
-            // Set parameters
-            $param_address= trim($_POST["address"]);
-
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-
-                $address = trim($_POST["address"]);
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
 
     // Check input errors before inserting in database
-    if (empty($name_err) && empty($user_name_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err) && empty($phone_err) && empty($address_err)) {
+    if (empty($name_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)) {
 
         // Prepare an insert statement
-        $sql =mysqli_query($con, "INSERT INTO user (`name`,`user_name`, `password`,`email`,`phone`,`address`) VALUES ('$name','$user_name','$password','$email','$phone','$address')");
+        $sql =mysqli_query($con, "INSERT INTO admin (`name`,`username`, `password`,`email`) VALUES ('$name','$username','$password','$email')");
 
         if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_name, $param_user_name, $param_password, $param_email, $param_phone, $param_address);
+            mysqli_stmt_bind_param($stmt, "ss", $param_name, $param_username, $param_password, $param_email);
 
             // Set parameters
             $param_name = $name;
-            $param_user_name = $user_name;
+            $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_email = $email;
-            $param_phone = $phone;
-            $param_address = $address;
+
+
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -249,10 +191,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="help-block"><?php echo $name_err; ?></span>
 
         </div>
-        <div class="form-group <?php echo (!empty($user_name_err)) ? 'has-error' : ''; ?>">
+        <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 
-            <input type="text" name="user_name" class="form-control" placeholder="User Name" value="<?php echo $user_name; ?>">
-            <span class="help-block"><?php echo $user_name_err; ?></span>
+            <input type="text" name="username" class="form-control" placeholder="User Name" value="<?php echo $username; ?>">
+            <span class="help-block"><?php echo $username_err; ?></span>
 
         </div>
         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
@@ -271,18 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="help-block"><?php echo $email_err; ?></span>
 
         </div>
-        <div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
 
-            <input type="text" name="phone" class="form-control" placeholder="Phone" value="<?php echo $phone; ?>">
-            <span class="help-block"><?php echo $phone_err; ?></span>
-
-        </div>
-        <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
-
-            <input type="text" name="address" class="form-control" placeholder="Address" value="<?php echo $address; ?>">
-            <span class="help-block"><?php echo $address_err; ?></span>
-
-        </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Submit">
             <input type="reset" class="btn btn-default" value="Reset">
