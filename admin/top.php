@@ -61,8 +61,8 @@ if($cur_path=='' || $cur_path=='index.php'){
 
             </ul>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="Welcome_Page.php"><img src="assets/images/logo.png" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="Welcome_Page.php"><img src="assets/images/logo.png" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="Welcome_Page.php"><img src="assets/images/logo2.png" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="Welcome_Page.php"><img src="assets/images/logo2.png" alt="logo"/></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
 
