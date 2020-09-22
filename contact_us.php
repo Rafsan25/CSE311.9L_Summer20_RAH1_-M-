@@ -6,7 +6,7 @@ include ("header.php");
     <div class="container">
         <div class="breadcrumb-content">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li class="active"> Contact Us </li>
             </ul>
         </div>
