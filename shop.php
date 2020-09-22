@@ -11,8 +11,7 @@ if(isset($_GET['cat_dish'])){
     <div class="container">
         <div class="breadcrumb-content">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Shop Grid Style </li>
+                <li><a href="shop.php">Shop</a></li>
             </ul>
         </div>
     </div>
@@ -21,6 +20,11 @@ if(isset($_GET['cat_dish'])){
     <div class="container">
         <div class="row flex-row-reverse">
             <div class="col-lg-9">
+                <?php
+                // Select All from 
+                $product_res=mysqli_query($con,"SELECT * FROM dish WHERE status=1 ORDER BY dish DESC")
+                ?>
+                ?>
                 <div class="banner-area pb-30">
                     <a href="product-details.html"><img alt="" src="assets/img/banner/banner-49.jpg"></a>
                 </div>
@@ -28,6 +32,9 @@ if(isset($_GET['cat_dish'])){
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
                         <div class="row">
+                            <?php
+                                while
+                            ?>
                             <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
                                 <div class="product-wrapper">
                                     <div class="product-img">
@@ -45,142 +52,7 @@ if(isset($_GET['cat_dish'])){
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-3.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-4.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-5.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-6.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-7.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-8.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="product-wrapper">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img src="assets/img/product/product-9.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h4>
-                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
-                                        </h4>
-                                        <div class="product-price-wrapper">
-                                            <span>$100.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -188,7 +60,9 @@ if(isset($_GET['cat_dish'])){
             </div>
             <?php
             $cat_id=0;
-            $cat_res=mysqli_query($con,"select * from category where status=1 order by order_number desc")
+            // Select All from category Table where status=1
+            // It's order by Order_Number desc
+            $cat_res=mysqli_query($con,"SELECT * FROM category WHERE status=1 ORDER BY order_number DESC")
             ?>
             <div class="col-lg-3">
                 <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
@@ -199,7 +73,8 @@ if(isset($_GET['cat_dish'])){
                                 <li> <a href="#">Vegetables</a> </li>
                                 <li> <a href="#">Fruits</a></li>
                                 <li> <a href="#">Red Meat</a></li>
-                                 <?php 
+                                 <?php
+                                 // While loop
                                         while($cat_row=mysqli_fetch_assoc($cat_res)){
                                             $class="selected";
                                             if($cat_id==$cat_row['id']){
