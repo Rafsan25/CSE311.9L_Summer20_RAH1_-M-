@@ -9,16 +9,18 @@ $type=get_safe_value($_POST['type']);
 $added_on=date('Y-m-d h:i:s');
 if($type=='register'){
 	$name=get_safe_value($_POST['name']);
+    $user_name=get_safe_value($_POST['user_name']);
 	$email=get_safe_value($_POST['email']);
 	$mobile=get_safe_value($_POST['mobile']);
 	$password=get_safe_value($_POST['password']);
+    $address=get_safe_value($_POST['address']);
 	$check=mysqli_num_rows(mysqli_query($con,"select * from user where email='$email'"));
 	if($check>0){
 		$arr=array('status'=>'error','msg'=>'Email id already registered','field'=>'email_error');
 	}else{
 		$new_password=password_hash($password,PASSWORD_BCRYPT);
 		$rand_str=rand_str();
-		mysqli_query($con,"insert into user(name,email,mobile,password,status,email_verify,added_on,rand_str) values('$name','$email','$mobile','$new_password','1','0','$added_on','$rand_str')");
+		mysqli_query($con,"insert into user(name,user_name,email,mobile,address,password,status,email_verify,added_on,rand_str) values('$name','$user_name','$email','$mobile','$address','$new_password','1','0','$added_on','$rand_str')");
 		$id=mysqli_insert_id($con);
 		$html=FRONT_SITE_PATH."verify.php?id=".$rand_str;
 		send_email($email,$html,'Verify your email id');

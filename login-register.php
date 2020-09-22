@@ -38,10 +38,12 @@ include ("header.php");
                                         <div class="login-register-form">
                                             <form method="post" id="frmRegister">
                                                 <input type="text" name="name" placeholder="Name" id="name" required>
+                                                <input type="text" name="user_name" placeholder="User Name" id="user_name" required>
                                                 <input name="email" id="email" placeholder="Email" type="email" required>
                                                 <div id="email_error" class="error_field"></div>
                                                 <input type="password" name="password" placeholder="Password" id="password" required>
                                                 <input type="text" name="mobile" placeholder="Mobile" id="mobile" required>
+                                                <input type="text" name="address" placeholder="Address" id="address" required>
                                                 <div class="button-box">
                                                     <button type="submit" id="register_submit">Register</button>
                                                 </div>
