@@ -16,18 +16,22 @@ if(isset($_GET['cat_dish'])){
         </div>
     </div>
 </div>
+
 <div class="shop-page-area pt-100 pb-100">
     <div class="container">
         <div class="row flex-row-reverse">
             <div class="col-lg-9">
                 <?php
                 // Select All from
-                $product_res=mysqli_query($con,"SELECT * FROM dish WHERE status=1 ORDER BY dish DESC")
+                $product_sql= "SELECT * FROM dish WHERE status=1";
+                if(isset($_Get['cat_id']) && $_Get['cat_id']>0){
+                    $cat_id=$_Get['cat_id'];
+
+                }
+                $product_sql.=" ORDER BY dish DESC";
+                $product_res=mysqli_query($con,$product_sql);
                 ?>
-                ?>
-                <div class="banner-area pb-30">
-                    <a href="product-details.html"><img alt="" src="assets/img/banner/banner-49.jpg"></a>
-                </div>
+
 
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
