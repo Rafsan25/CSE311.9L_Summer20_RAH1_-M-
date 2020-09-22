@@ -1,6 +1,6 @@
 <?php
 // import the config file
-require_once "../config.php";
+require_once "config.php";
 
 // Define variables and initialize with null string
 $name = $user_name = $password = $confirm_password =$email= $phone= $address="";
