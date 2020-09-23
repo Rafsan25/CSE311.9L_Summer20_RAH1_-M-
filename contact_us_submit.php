@@ -1,4 +1,5 @@
 <?php
+
 include('config.php');
 include('function.inc.php');
 include('constant.inc.php');
