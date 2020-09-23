@@ -57,7 +57,7 @@ include ("header.php");
                 <div class="contact-message-wrapper">
                     <h4 class="contact-title">GET IN TOUCH</h4>
                     <div class="contact-message">
-                        <form id="contact-form" action="https://demo.hasthemes.com/billy-preview/billy/assets/mail.php" method="post">
+                        <form id="contact-form" action="contact_us_submit.php" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="contact-form-style mb-20">

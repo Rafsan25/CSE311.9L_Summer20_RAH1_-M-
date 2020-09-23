@@ -16,6 +16,7 @@ include ("header.php");
             <div class="row flex-row-reverse">
                 <div class="col-lg-9">
                     <?php
+                    // Select All from dish
                     $cat_id=0;
                     $product_sql="select * from dish where status=1";
                     if(isset($_GET['cat_id']) && $_GET['cat_id']>0){
@@ -58,6 +59,8 @@ include ("header.php");
                     </div>
                 </div>
                 <?php
+                // Select All from category Table where status=1
+                // It's order by Order_Number desc
                 $cat_res=mysqli_query($con,"select * from category where status=1 order by order_number desc")
                 ?>
                 <div class="col-lg-3">
@@ -67,6 +70,7 @@ include ("header.php");
                             <div class="shop-catigory">
                                 <ul id="faq" class="category_list">
                                     <?php
+                                    //Loop
                                     while($cat_row=mysqli_fetch_assoc($cat_res)){
                                         $class="selected";
                                         if($cat_id==$cat_row['id']){
