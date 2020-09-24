@@ -1,5 +1,9 @@
 <?php
 include ("header.php");
+$cat_dish='';
+if(isset($_GET['cat_dish'])){
+    $cat_dish=$_GET['cat_dish'];
+}
 ?>
 
     <div class="breadcrumb-area gray-bg">
@@ -103,12 +107,15 @@ include ("header.php");
         </div>
     </div>
         <form method="get" id="frmCatDish">
-            <input type="textbox" name="cat_dish"/>
+            <input type="textbox" name="cat_dish" id="cat_dish" value="<?php echo $cat_dish ?>"/>
 
             </form>
             <script>
                 function set_checkbox(id){
-
+                    var cat_dish=jQuery('#cat_dish').val();
+                    cat_dish=cat_dish+":"+id;
+                    jQuery('#cat_dish').val(cat_dish);
+                    jQuery('#frmCatDish')[0].submit();
             }
             </script>
 
