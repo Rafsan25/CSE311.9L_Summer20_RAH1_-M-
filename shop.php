@@ -90,7 +90,7 @@ include ("header.php");
                                         if($cat_id==$cat_row['id']){
                                             $class="active";
                                         }
-                                        echo "<li> <a class='$class' href='shop.php?cat_id=".$cat_row['id']."'>".$cat_row['category']."</a></li>";
+                                        echo "<li> <input onclick=set_checkbox('".$cat_row['id']."') type='checkbox' class='cat_checkbox' name='cat_arr[]' value='".$cat_row['id']."'/>".$cat_row['category']."</li>";
 
                                     }
                                     ?>
@@ -102,6 +102,15 @@ include ("header.php");
             </div>
         </div>
     </div>
+        <form method="get" id="frmCatDish">
+            <input type="textbox" name="cat_dish"/>
+
+            </form>
+            <script>
+                function set_checkbox(id){
+
+            }
+            </script>
 
 <?php
 include("footer.php");

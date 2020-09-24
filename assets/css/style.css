@@ -5314,7 +5314,7 @@ h5.panel-title span {
     width: 30px;
 }
 
-.category_list{
+.category_list .active{
     color: #e02c2b;
 }
 .product-price-wrapper .select {
@@ -5327,4 +5327,8 @@ h5.panel-title span {
     font-size: 20px;
     margin-left: 4px;
     cursor: pointer;
+}
+.category_list .cat_checkbox{
+    width: 15px;
+    height: 12px;
 }
