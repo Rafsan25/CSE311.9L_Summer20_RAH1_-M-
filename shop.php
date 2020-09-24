@@ -1,8 +1,11 @@
 <?php
 include ("header.php");
 $cat_dish='';
+$cat_dish_arr=array();
 if(isset($_GET['cat_dish'])){
-    $cat_dish=$_GET['cat_dish'];
+    $cat_dish=get_safe_value($_GET['cat_dish']);
+    $cat_dish_arr=array_filter(explode(':',$cat_dish));
+    $cat_dish_str=implode(",",$cat_dish_arr);
 }
 ?>
 
@@ -23,9 +26,8 @@ if(isset($_GET['cat_dish'])){
                     // Select All from dish
                     $cat_id=0;
                     $product_sql="select * from dish where status=1";
-                    if(isset($_GET['cat_id']) && $_GET['cat_id']>0){
-                        $cat_id=get_safe_value($_GET['cat_id']);
-                        $product_sql.=" and category_id='$cat_id' ";
+                    if(isset($_GET['cat_dish']) && $_GET['cat_dish']!=''){
+                        $product_sql.=" and category_id in ($cat_dish_str) ";
                     }
                     $product_sql.=" order by dish desc";
                     $product_res=mysqli_query($con,$product_sql);
@@ -94,7 +96,11 @@ if(isset($_GET['cat_dish'])){
                                         if($cat_id==$cat_row['id']){
                                             $class="active";
                                         }
-                                        echo "<li> <input onclick=set_checkbox('".$cat_row['id']."') type='checkbox' class='cat_checkbox' name='cat_arr[]' value='".$cat_row['id']."'/>".$cat_row['category']."</li>";
+                                        $is_checked='';
+                                        if(in_array($cat_row['id'],$cat_dish_arr)){
+                                            $is_checked="checked='checked'";
+                                        }
+                                        echo "<li> <input $is_checked onclick=set_checkbox('".$cat_row['id']."') type='checkbox' class='cat_checkbox' name='cat_arr[]' value='".$cat_row['id']."'/>".$cat_row['category']."</li>";
 
                                     }
                                     ?>
@@ -107,13 +113,18 @@ if(isset($_GET['cat_dish'])){
         </div>
     </div>
         <form method="get" id="frmCatDish">
-            <input type="textbox" name="cat_dish" id="cat_dish" value="<?php echo $cat_dish ?>"/>
+            <input type="hidden" name="cat_dish" id="cat_dish" value="<?php echo $cat_dish ?>"/>
 
             </form>
             <script>
                 function set_checkbox(id){
                     var cat_dish=jQuery('#cat_dish').val();
-                    cat_dish=cat_dish+":"+id;
+                    var check=cat_dish.search(":"+id);
+                    if(check!='-1'){
+                        cat_dish=cat_dish.replace(":"+id,'');
+                    }else{
+                        cat_dish=cat_dish+":"+id;
+                    }
                     jQuery('#cat_dish').val(cat_dish);
                     jQuery('#frmCatDish')[0].submit();
             }
