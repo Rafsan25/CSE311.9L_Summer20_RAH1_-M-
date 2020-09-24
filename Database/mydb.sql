@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2020 at 03:24 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Generation Time: Sep 24, 2020 at 08:00 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,8 +65,31 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) VALUES
 (1, 'Drinks', 1, 1, '2020-06-16 12:06:33'),
 (2, 'Chinese', 2, 1, '2020-06-16 12:06:41'),
-(3, 'South Indian', 3, 1, '2020-06-16 12:06:59'),
+(3, 'Fast Food', 3, 1, '2020-06-16 12:06:59'),
 (4, 'Desserts', 4, 1, '2020-06-16 12:07:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `subject` varchar(200) NOT NULL,
+  `message` text NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `name`, `email`, `mobile`, `subject`, `message`, `added_on`) VALUES
+(2, 'Syed Salman Reza', 'syedsalmanreza999@gmail.com', '01709279556', 'fsdfs', 'sfsdfsf', '2020-09-24 05:45:46');
 
 -- --------------------------------------------------------
 
@@ -135,7 +158,9 @@ CREATE TABLE `dish` (
 --
 
 INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `status`, `added_on`) VALUES
-(1, 2, 'Burger', '', '588598886_product-detalis-l2.jpg', 1, '2020-09-24 07:07:38');
+(1, 3, 'Burger', '', '588598886_product-detalis-l2.jpg', 1, '2020-09-24 07:07:38'),
+(2, 3, 'Pizza', 'errr', '860413152_download.jpg', 1, '2020-09-24 07:54:10'),
+(3, 1, 'Coke', 'cfdasd', '899138941_coke_original_12oz_mobile.jpg', 1, '2020-09-24 07:54:55');
 
 -- --------------------------------------------------------
 
@@ -171,7 +196,9 @@ CREATE TABLE `dish_details` (
 --
 
 INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `added_on`) VALUES
-(1, 1, 'Burger', 250, 1, '2020-09-24 07:07:38');
+(1, 1, 'Burger', 250, 1, '2020-09-24 07:07:38'),
+(2, 2, 'Pizza', 1200, 1, '2020-09-24 07:54:10'),
+(3, 3, 'Coke', 30, 1, '2020-09-24 07:54:55');
 
 -- --------------------------------------------------------
 
@@ -260,6 +287,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
@@ -330,6 +363,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
@@ -345,7 +384,7 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dish_cart`
@@ -357,7 +396,7 @@ ALTER TABLE `dish_cart`
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
