@@ -55,7 +55,7 @@ if(isset($_GET['cat_dish'])){
                                                     <div class="product-price-wrapper">
                                                         <?php
                                                             while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res)){
-                                                                echo "<input type='radio' class='dish_radio'/>";
+                                                                echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' value='radio_".$dish_attr_row['id']."'/>";
                                                                 echo $dish_attr_row['attribute'];
                                                                 echo "&nbsp;&nbsp;";
                                                                 echo "<span>(".$dish_attr_row['price'].")</span>";
