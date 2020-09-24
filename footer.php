@@ -34,6 +34,7 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 
 <!-- Mirrored from demo.hasthemes.com/billy-preview/billy/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 19:15:26 GMT -->
