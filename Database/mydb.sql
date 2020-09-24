@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 08:52 PM
+-- Generation Time: Sep 24, 2020 at 03:24 PM
 -- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `username`, `password`, `email`) VALUES
-(1, 'Admin', 'admin', 'admin', 'admin@gmail.com');
+(1, 'Admin', 'admin', 'admin', 'admin@gmail.com'),
+(2, 'Rafsan', 'who', 'cypher', 'hashim.khan@northsouth.edu'),
+(3, 'Gustavo', 'gus_fring', 'lospollos', 'los_pollos@hermeinos.com');
 
 -- --------------------------------------------------------
 
@@ -83,6 +85,13 @@ CREATE TABLE `coupon_code` (
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `coupon_code`
+--
+
+INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
+(1, 'Special1', 'P', 10, 200, '2020-10-04', 1, '2020-09-22 06:48:35');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +106,13 @@ CREATE TABLE `delivery_boy` (
   `status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `delivery_boy`
+--
+
+INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
+(1, 'Durjoy', '01234567891', 'prachir', 1, '2020-09-17 08:54:34');
 
 -- --------------------------------------------------------
 
@@ -119,9 +135,21 @@ CREATE TABLE `dish` (
 --
 
 INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `status`, `added_on`) VALUES
-(1, 1, 'Dumplings', 'Cabbage filled Chinese dumplings', '', 1, '2020-09-16 15:29:18'),
-(6, 2, 'Fried Dumpings', 'Beef filled dumplings ', '285880405_Dumplings.jpg', 1, '2020-09-19 12:29:11'),
-(7, 2, 'Gulab Jamun', 'v', '367917297_IMG_8253.jpeg', 1, '2020-09-19 12:40:08');
+(1, 2, 'Burger', '', '588598886_product-detalis-l2.jpg', 1, '2020-09-24 07:07:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dish_cart`
+--
+
+CREATE TABLE `dish_cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `dish_detail_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -143,19 +171,7 @@ CREATE TABLE `dish_details` (
 --
 
 INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `added_on`) VALUES
-(1, 0, 'full', 290, 1, '2020-09-19 11:27:21'),
-(2, 0, 'full', 290, 1, '2020-09-19 11:33:17'),
-(3, 0, 'full', 290, 1, '2020-09-19 11:35:39'),
-(4, 0, 'half ', 150, 1, '2020-09-19 11:35:39'),
-(5, 0, 'full', 290, 0, '2020-09-19 11:43:13'),
-(6, 0, 'full', 290, 0, '2020-09-19 11:47:55'),
-(7, 0, 'full', 290, 1, '2020-09-19 11:48:26'),
-(8, 0, 'full', 290, 1, '2020-09-19 11:49:12'),
-(9, 3, 'full', 290, 1, '2020-09-19 12:15:04'),
-(10, 4, 'full', 290, 1, '2020-09-19 12:17:02'),
-(11, 5, 'full', 290, 1, '2020-09-19 12:19:45'),
-(12, 6, 'full', 290, 1, '2020-09-19 12:29:11'),
-(13, 7, 'full', 290, 1, '2020-09-19 12:40:08');
+(1, 1, 'Burger', 250, 1, '2020-09-24 07:07:38');
 
 -- --------------------------------------------------------
 
@@ -216,17 +232,16 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `phone` int(11) NOT NULL,
-  `email_verify` int(11) NOT NULL,
-  `rand_str` varchar(20) NOT NULL,
-  `address` varchar(45) NOT NULL
+  `address` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `email_verify`, `rand_str`, `address`) VALUES
-(1, 'AHMED', 'aaa3', 'PHPMYADMIN', 'ashfaq.ahmed@northsouth.edu', 1950035131, 0, '', '10/12,TAJMAHAL ROAD,MDPUR');
+INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `address`, `status`) VALUES
+(1, 'Rafsan Khan', 'rafsan1', '123456', 'hashim.khan@northsouth.edu', 1778211102, 'Rampura,Dhaka', 0);
 
 --
 -- Indexes for dumped tables
@@ -260,6 +275,12 @@ ALTER TABLE `delivery_boy`
 -- Indexes for table `dish`
 --
 ALTER TABLE `dish`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dish_cart`
+--
+ALTER TABLE `dish_cart`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -300,7 +321,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -312,25 +333,31 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `delivery_boy`
 --
 ALTER TABLE `delivery_boy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `dish_cart`
+--
+ALTER TABLE `dish_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_detail`

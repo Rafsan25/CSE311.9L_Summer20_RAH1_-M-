@@ -46,6 +46,20 @@ include ("header.php");
                                                     <div class="product-price-wrapper">
                                                         <span>100</span>
                                                     </div>
+
+                                                    <!--Added Options for quantity of product-->
+                                                    <div class="product-price-wrapper">
+                                                        <select class="select">
+                                                            <option>Qty</option>
+                                                            <?php
+                                                            for($i=1;$i<=10;$i++){
+                                                               echo "<option>$i</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <!--Created class for cart icon-->
+                                                        <i class="fa fa-shopping-cart cart_icon" aria-hidden="true" onclick="add_to cart()"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

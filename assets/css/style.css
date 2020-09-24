@@ -5317,3 +5317,14 @@ h5.panel-title span {
 .category_list{
     color: #e02c2b;
 }
+.product-price-wrapper .select {
+    height: 24px;
+    width: 24%;
+    border: 1px solid #626262;
+    margin-top: 5px;
+}
+.product-price-wrapper .cart_icon {
+    font-size: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+}
