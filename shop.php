@@ -45,12 +45,23 @@ if(isset($_GET['cat_dish'])){
                                                         <img src="<?php echo SITE_DISH_IMAGE.$product_row['image']?>" alt="">
                                                     </a>
                                                 </div>
-                                                <div class="product-content">
+                                                <div class="product-content" id="dish_detail">
                                                     <h4>
                                                         <a href="javascript:void(0)"><?php echo $product_row['dish']?> </a>
                                                     </h4>
+                                                    <?php
+                                                    $dish_attr_res=mysqli_query($con,"SELECT * FROM dish_details WHERE status='1' AND dish_id='".$product_row['id']."' ORDER BY price asc");
+                                                    ?>
                                                     <div class="product-price-wrapper">
-                                                        <span>100</span>
+                                                        <?php
+                                                            while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res)){
+                                                                echo "<input type='radio' class='dish_radio'/>";
+                                                                echo $dish_attr_row['attribute'];
+                                                                echo "&nbsp;&nbsp;";
+                                                                echo "<span>(".$dish_attr_row['price'].")</span>";
+                                                                echo "&nbsp;&nbsp;";
+                                                            }
+                                                        ?>
                                                     </div>
 
                                                     <!--Added Options for quantity of product-->
@@ -89,6 +100,7 @@ if(isset($_GET['cat_dish'])){
                             <h4 class="shop-sidebar-title">Shop By Categories</h4>
                             <div class="shop-catigory">
                                 <ul id="faq" class="category_list">
+                                    <li> <a href="shop.php"><u>Clear</u></a> </li>
                                     <?php
                                     //Loop
                                     while($cat_row=mysqli_fetch_assoc($cat_res)){

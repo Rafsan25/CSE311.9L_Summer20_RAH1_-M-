@@ -5332,3 +5332,8 @@ h5.panel-title span {
     width: 15px;
     height: 12px;
 }
+#dish_detail .dish_radio{
+    width: 16px;
+    height: 12px;
+    margin-right: 5px;
+}
