@@ -13,7 +13,7 @@ if (!isset($_SESSION['IS_LOGIN'])){
     redirect('Login.php');
 }
 $page_title='';
-if($cur_path=='' || $cur_path=='index.php'){
+if($cur_path=='' || $cur_path=='Welcome_Page.php'){
 	$page_title='Dashboard';
 }elseif($cur_path=='category.php' || $cur_path=='manage_category.php'){
 	$page_title='Manage Category';
@@ -25,6 +25,8 @@ if($cur_path=='' || $cur_path=='index.php'){
 	$page_title='Manage Coupon Code';
 }elseif($cur_path=='dish.php' || $cur_path=='manage_dish.php') {
     $page_title = 'Manage Dish';
+}elseif($cur_path=='contact_admin.php') {
+    $page_title = 'Contact';
 }
 ?>
 <!DOCTYPE html>
