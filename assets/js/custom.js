@@ -29,7 +29,7 @@ jQuery('#frmLogin').on('submit',function(e){
     jQuery('#login_submit').attr('disabled',true);
     jQuery('#form_login_msg').html('Please wait...');
     jQuery.ajax({
-        url:'login_register_submit.php',
+        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/login_register_submit.php',
         type:'post',
         data:jQuery('#frmLogin').serialize(),
         success:function(result){
@@ -78,7 +78,7 @@ jQuery('#frmProfile').on('submit',function(e){
     jQuery('#profile_submit').attr('disabled',true);
     jQuery('#form_msg').html('Please wait...');
     jQuery.ajax({
-        url:FRONT_SITE_PATH+'update_profile',
+        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/update_profile.php',
         type:'post',
         data:jQuery('#frmProfile').serialize(),
         success:function(result){

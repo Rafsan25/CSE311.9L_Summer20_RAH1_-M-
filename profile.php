@@ -1,7 +1,7 @@
 <?php
 include ("header.php");
 if(!isset($_SESSION['FOOD_USER_ID'])){
-	redirect(FRONT_SITE_PATH.'shop');
+	redirect(FRONT_SITE_PATH.'shop.php');
 }
 $getUserDetails=getUserDetailsByid();
 ?>
@@ -12,9 +12,10 @@ $getUserDetails=getUserDetailsByid();
 				
                     <div class="ml-auto mr-auto col-lg-9">
 						<div>
-							<h4>Referral Code: <?php echo $getUserDetails['referral_code']?></h4><br/>
+                            <!--
+                            <h4>Referral Code: <?php echo $getUserDetails['referral_code']?></h4><br/>
 							<h4>Referral Link: <?php echo FRONT_SITE_PATH?>login_register?referral_code=<?php echo $getUserDetails['referral_code']?></h4><br/>
-							
+						    -->
 						</div>
                         <div class="checkout-wrapper">
                             <div id="faq" class="panel-group">
@@ -46,6 +47,7 @@ $getUserDetails=getUserDetailsByid();
 														<div class="col-lg-12 col-md-12">
 															<div class="billing-info">
 																<label>Email Address</label>
+                                                                <!-- ReadOnly state user can not change Email -->
 																<input type="email" readonly="readonly" value="<?php echo $getUserDetails['email']?>">
 															</div>
 														</div>
@@ -53,7 +55,7 @@ $getUserDetails=getUserDetailsByid();
 													</div>
 													<div class="billing-back-btn">
 														<div class="billing-back">
-															<a href="#"><i class="ion-arrow-up-c"></i> back</a>
+															<a href="#"><i class="ion-arrow-up-c"></i> Back</a>
 														</div>
 														<div class="billing-btn">
 															<button type="submit" id="profile_submit">Save</button>

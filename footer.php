@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-7">
                     <div class="copyright">
-                        <p>Copyright © <a href="#">Billy.</a> . All Right Reserved.</p>
+                        <p>Copyright © <a href="#">CSE311.9L</a> . All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-5">

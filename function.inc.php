@@ -54,22 +54,39 @@ function rand_str(){
     return $str=substr($str,0,15);
     
 }
-function getUserDetailsByid($uid=''){
+/*function getUserDetailsByid($uid=''){
     global $con;
     $data['name']='';
     $data['email']='';
     $data['phone']='';
     $data['referral_code']='';
-    
+
+
     if(isset($_SESSION['FOOD_USER_ID'])){
         $uid=$_SESSION['FOOD_USER_ID'];
     }
-    
+
     $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where id='$uid'"));
     $data['name']=$row['name'];
     $data['email']=$row['email'];
     $data['phone']=$row['phone'];
     $data['referral_code']=$row['referral_code'];
+    return $data;
+}*/
+function getUserDetailsByid(){
+    global $con;
+    $data['name']='';
+    $data['email']='';
+    $data['phone']='';
+    //$data['referral_code']='';
+
+    if(isset($_SESSION['FOOD_USER_ID'])){
+        $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where user_id=".$_SESSION['FOOD_USER_ID']));
+        $data['name']=$row['name'];
+        $data['email']=$row['email'];
+        $data['phone']=$row['phone'];
+        //$data['referral_code']=$row['referral_code'];
+    }
     return $data;
 }
 ?>

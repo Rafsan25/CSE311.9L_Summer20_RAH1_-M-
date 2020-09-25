@@ -61,7 +61,7 @@ include('constant.inc.php');
                 <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                     <div class="logo">
                         <a href="index.php">
-                            <img alt="" src="assets/img/logo/logo.png">
+                            <img alt="" src="assets/img/logo/logo2.png">
                         </a>
                     </div>
                 </div>

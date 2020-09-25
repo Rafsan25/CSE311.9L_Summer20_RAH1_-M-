@@ -44,7 +44,7 @@ if($type=='login'){
 		if($email_verify==1){
 			if($status==1){
 				if(password_verify($password,$dbpassword)){
-					$_SESSION['FOOD_USER_ID']=$row['id'];
+					$_SESSION['FOOD_USER_ID']=$row['user_id'];
 					$_SESSION['FOOD_USER_NAME']=$row['name'];
 					$arr=array('status'=>'success','msg'=>'');
 				}else{
@@ -54,7 +54,7 @@ if($type=='login'){
 				$arr=array('status'=>'error','msg'=>'Your account has been deactivated.');
 			}
 		}else{
-			$arr=array('status'=>'error','msg'=>'Please varify your email id');
+			$arr=array('status'=>'error','msg'=>'Please verify your email id');
 		}
 	}else{
 		$arr=array('status'=>'error','msg'=>'Please enter valid email id');	
@@ -71,12 +71,12 @@ if($type=='forgot'){
 		$row=mysqli_fetch_assoc($res);
 		$status=$row['status'];
 		$email_verify=$row['email_verify'];
-		$id=$row['id'];
+		$id=$row['user_id'];
 		if($email_verify==1){
 			if($status==1){
 				$rand_password=rand(11111,99999);
 				$new_password=password_hash($rand_password,PASSWORD_BCRYPT);
-				mysqli_query($con,"update user set password='$new_password' where id='$id'");
+				mysqli_query($con,"update user set password='$new_password' where user_id='$id'");
 				$html=$rand_password;
 				send_email($email,$html,'New Password');
 				$arr=array('status'=>'success','msg'=>'Password has been reset and send it to your email id');
