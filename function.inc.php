@@ -31,9 +31,9 @@ function send_email($email,$html,$subject){
     $mail->Port=587;
     $mail->SMTPSecure="tls";
     $mail->SMTPAuth=true;
-    $mail->Username="EMAIL";
-    $mail->Password="PASSWORD";
-    $mail->SetFrom("EMAIL");
+    $mail->Username="sayeemfifa64@gmail.com";
+    $mail->Password="acerlaptopfifa";
+    $mail->SetFrom("sayeemfifa64@gmail.com");
     $mail->addAddress($email);
     $mail->IsHTML(true);
     $mail->Subject=$subject;
@@ -53,5 +53,23 @@ function rand_str(){
     $str=str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
     return $str=substr($str,0,15);
     
+}
+function getUserDetailsByid($uid=''){
+    global $con;
+    $data['name']='';
+    $data['email']='';
+    $data['phone']='';
+    $data['referral_code']='';
+    
+    if(isset($_SESSION['FOOD_USER_ID'])){
+        $uid=$_SESSION['FOOD_USER_ID'];
+    }
+    
+    $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where id='$uid'"));
+    $data['name']=$row['name'];
+    $data['email']=$row['email'];
+    $data['phone']=$row['phone'];
+    $data['referral_code']=$row['referral_code'];
+    return $data;
 }
 ?>
