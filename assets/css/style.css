@@ -5313,32 +5313,12 @@ h5.panel-title span {
     height: 10px;
     width: 30px;
 }
-
-.category_list .active{
-    color: #e02c2b;
-}
-.product-price-wrapper .select {
-    height: 24px;
-    width: 24%;
-    border: 1px solid #626262;
-    margin-top: 5px;
-}
-.product-price-wrapper .cart_icon {
-    font-size: 20px;
-    margin-left: 4px;
-    cursor: pointer;
-}
-.category_list .cat_checkbox{
-    width: 15px;
-    height: 12px;
-}
-#dish_detail .dish_radio{
-    width: 16px;
-    height: 12px;
-    margin-right: 5px;
-}
 .error_field{
     margin-top: -28px;
     margin-bottom: 18px;
+    color: red;
+}
+.success_field{
+    margin-top: 10px;
     color: red;
 }
