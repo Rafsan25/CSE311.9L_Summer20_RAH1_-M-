@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2020 at 03:46 PM
+-- Generation Time: Sep 25, 2020 at 07:18 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -256,7 +256,7 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `user_name` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(45) NOT NULL,
   `phone` int(11) NOT NULL,
   `address` varchar(45) NOT NULL,
@@ -271,7 +271,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `address`, `status`, `email_verify`, `rand_str`) VALUES
 (1, 'Rafsan Khan', 'rafsan1', '123456', 'hashim.khan@northsouth.edu', 1778211102, 'Rampura,Dhaka', 0, 0, ''),
-(2, 'Syed Salman Reza', 'salman457', '$2y$10$.hRbPMK62IRoZOxXjact2e5Zt30MCCBiFnAfoH', 'syedsalmanreza556@gmail.com', 0, 'Mirpur, Dhaka', 1, 0, 'iywnytvwbcgrcup');
+(5, 'Syed Salman Reza', 'rafsan457', '$2y$10$d2GiEO9hKCZHbz1zH4ZMDOSXG55K8RdK4tco0d', 'syedsalmanreza1998@gmail.com', 0, 'Mirpur, Dhaka', 1, 1, 'pibvhaomplniqwr'),
+(7, 'Syed Salman Reza', 'salman457', '$2y$10$JBnpiX1R5ExdwdQfg.arLu9qZfRQQsL/3WPSApmpYBnW303gLFUam', 'syedsalmanreza556@gmail.com', 0, 'Mirpur, Dhaka', 1, 1, 'awcunnuqoyepqdf'),
+(8, 'asdsad', 'asdasdas', '$2y$10$Xxn1/Rkz86mMSnQcBIC7ReEpVke/qL3U..PJd8.ynNDcAi9WJ2yPe', 'asdsad@dasd', 0, 'asdasdas', 1, 0, 'efrpxugcsjtqxif'),
+(9, 'sadfasd', 'asdsad', '$2y$10$NFUbkFGGOikiXQNbzQL2QOqDSuokvrsg0FxCQ45g/7VVnjzenMAsa', 'asdsd@fd', 0, 'sdfsf', 1, 0, 'phvjbidnjdmponb');
 
 --
 -- Indexes for dumped tables
@@ -423,7 +426,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
