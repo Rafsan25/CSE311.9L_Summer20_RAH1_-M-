@@ -10,7 +10,7 @@ if($type=='register'){
 	$name=get_safe_value($_POST['name']);
     $user_name=get_safe_value($_POST['user_name']);
 	$email=get_safe_value($_POST['email']);
-	$mobile=get_safe_value($_POST['mobile']);
+	$phone=get_safe_value($_POST['phone']);
 	$password=get_safe_value($_POST['password']);
     $address=get_safe_value($_POST['address']);
 	$check=mysqli_num_rows(mysqli_query($con,"select * from user where email='$email'"));
@@ -19,7 +19,7 @@ if($type=='register'){
 	}else{
 		$new_password=password_hash($password,PASSWORD_BCRYPT);
 		$rand_str=rand_str();
-		mysqli_query($con,"insert into user(name,user_name,email,mobile,address,password,status,email_verify,rand_str) values('$name','$user_name','$email','$mobile','$address','$new_password','1','0','$rand_str')");
+		mysqli_query($con,"insert into user(name,user_name,email,phone,address,password,status,email_verify,rand_str) values('$name','$user_name','$email','$phone','$address','$new_password','1','0','$rand_str')");
 		$id=mysqli_insert_id($con);
 		$html=FRONT_SITE_PATH."verify.php?id=".$rand_str;
 		send_email($email,$html,'Verify your email id');
