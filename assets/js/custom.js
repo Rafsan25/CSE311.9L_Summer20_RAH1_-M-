@@ -97,7 +97,7 @@ jQuery('#frmPassword').on('submit',function(e){
     jQuery('#password_submit').attr('disabled',true);
     jQuery('#password_form_msg').html('Please wait...');
     jQuery.ajax({
-        url:FRONT_SITE_PATH+'update_profile',
+        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/update_profile.php',
         type:'post',
         data:jQuery('#frmPassword').serialize(),
         success:function(result){

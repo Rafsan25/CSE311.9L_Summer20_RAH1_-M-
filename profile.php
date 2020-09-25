@@ -84,13 +84,13 @@ $getUserDetails=getUserDetailsByid();
 													<div class="row">
 														<div class="col-lg-12 col-md-12">
 															<div class="billing-info">
-																<label>Password</label>
+																<label>Enter Your Old Password</label>
 																<input type="password" name="old_password" required>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12">
 															<div class="billing-info">
-																<label>Password Confirm</label>
+																<label>New Password</label>
 																<input type="password" name="new_password" required>
 															</div>
 														</div>
