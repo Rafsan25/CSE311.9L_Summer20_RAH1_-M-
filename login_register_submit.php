@@ -1,12 +1,11 @@
 <?php
 session_start();
-include('database.inc.php');
+include('config.php');
 include('function.inc.php');
 include('constant.inc.php');
 include('smtp/PHPMailerAutoload.php');
 
 $type=get_safe_value($_POST['type']);
-$added_on=date('Y-m-d h:i:s');
 if($type=='register'){
 	$name=get_safe_value($_POST['name']);
     $user_name=get_safe_value($_POST['user_name']);
@@ -20,7 +19,7 @@ if($type=='register'){
 	}else{
 		$new_password=password_hash($password,PASSWORD_BCRYPT);
 		$rand_str=rand_str();
-		mysqli_query($con,"insert into user(name,user_name,email,mobile,address,password,status,email_verify,added_on,rand_str) values('$name','$user_name','$email','$mobile','$address','$new_password','1','0','$added_on','$rand_str')");
+		mysqli_query($con,"insert into user(name,user_name,email,mobile,address,password,status,email_verify,rand_str) values('$name','$user_name','$email','$mobile','$address','$new_password','1','0','$rand_str')");
 		$id=mysqli_insert_id($con);
 		$html=FRONT_SITE_PATH."verify.php?id=".$rand_str;
 		send_email($email,$html,'Verify your email id');

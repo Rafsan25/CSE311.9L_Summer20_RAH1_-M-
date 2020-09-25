@@ -5337,3 +5337,8 @@ h5.panel-title span {
     height: 12px;
     margin-right: 5px;
 }
+.error_field{
+    margin-top: -28px;
+    margin-bottom: 18px;
+    color: red;
+}
