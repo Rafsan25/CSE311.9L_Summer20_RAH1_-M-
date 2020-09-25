@@ -27,7 +27,7 @@ if($type=='password'){
 	$row=mysqli_fetch_assoc($res);
 	$dbpassword=$row['password'];
 	if(password_verify($old_password,$dbpassword)){
-		//$new_password=password_hash($new_password,PASSWORD_BCRYPT);//Encrytion decoding//	
+		$new_password=password_hash($new_password,PASSWORD_BCRYPT);//Encrytion decoding//
 		mysqli_query($con,"update user set password='$new_password' where user_id='$uid'");
 	$arr=array('status'=>'success','msg'=>'Password has been updated');
 	}else{
