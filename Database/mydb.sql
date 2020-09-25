@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2020 at 10:48 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: Sep 25, 2020 at 03:46 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -270,7 +270,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `address`, `status`, `email_verify`, `rand_str`) VALUES
-(1, 'Rafsan Khan', 'rafsan1', '123456', 'hashim.khan@northsouth.edu', 1778211102, 'Rampura,Dhaka', 0, 0, '');
+(1, 'Rafsan Khan', 'rafsan1', '123456', 'hashim.khan@northsouth.edu', 1778211102, 'Rampura,Dhaka', 0, 0, ''),
+(2, 'Syed Salman Reza', 'salman457', '$2y$10$.hRbPMK62IRoZOxXjact2e5Zt30MCCBiFnAfoH', 'syedsalmanreza556@gmail.com', 0, 'Mirpur, Dhaka', 1, 0, 'iywnytvwbcgrcup');
 
 --
 -- Indexes for dumped tables
@@ -422,7 +423,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
