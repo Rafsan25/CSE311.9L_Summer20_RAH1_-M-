@@ -114,3 +114,31 @@ jQuery('#frmPassword').on('submit',function(e){
     });
     e.preventDefault();
 });
+
+function set_checkbox(id){
+    var cat_dish=jQuery('#cat_dish').val();
+    var check=cat_dish.search(":"+id);
+    if(check!='-1'){
+        cat_dish=cat_dish.replace(":"+id,'');
+    }else{
+        cat_dish=cat_dish+":"+id;
+    }
+    jQuery('#cat_dish').val(cat_dish);
+    jQuery('#frmCatDish')[0].submit();
+}
+function setFoodType(type) {
+    jQuery('#type').val(type);
+    jQuery('#frmCatDish')[0].submit();
+}
+function add_to_cart(id,type){
+    var qty=jQuery('#qty'+id).val();
+    var attr=jQuery('input[name="radio_'+id+'"]:checked').val();
+    jQuery.ajax({
+        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
+        type:'post',
+        data:'qty='+qty+'&attt='+attr+'&type='+type,
+        success:function(result){
+            swal("Added to cart successfully!","checkout now!", "success")
+        }
+    });
+}

@@ -66,8 +66,8 @@ if(isset($_GET['cat_dish'])){
 
                                                     <!--Added Options for quantity of product-->
                                                     <div class="product-price-wrapper">
-                                                        <select class="select">
-                                                            <option>Qty</option>
+                                                        <select class="select" id="qty<?php echo $product_row['id']?>">
+                                                            <option value="0">Qty</option>
                                                             <?php
                                                             for($i=1;$i<=10;$i++){
                                                                echo "<option>$i</option>";
@@ -75,7 +75,7 @@ if(isset($_GET['cat_dish'])){
                                                             ?>
                                                         </select>
                                                         <!--Created class for cart icon-->
-                                                        <i class="fa fa-shopping-cart cart_icon" aria-hidden="true" onclick="add_to cart()"></i>
+                                                        <i class="fa fa-shopping-cart cart_icon" aria-hidden="true" onclick="add_to_cart('<?php echo $product_row['id']?>','add')"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,6 +139,17 @@ if(isset($_GET['cat_dish'])){
                     }
                     jQuery('#cat_dish').val(cat_dish);
                     jQuery('#frmCatDish')[0].submit();
+            }
+            function setFoodType(type){
+                    jQuery('#type').val(type);
+                    jQuery('#frmCatDish')[0].submit();
+            }
+            function add_to_cart(id){
+                    var qty=jQuery('#qty'+id).val();
+                    var attr=jQuery('input[name="radio_'+id+'"]:checked').val();
+                    jQuery.ajax({
+                        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
+                    });
             }
             </script>
 
