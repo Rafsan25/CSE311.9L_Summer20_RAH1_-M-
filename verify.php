@@ -6,7 +6,7 @@ $msg="";
 if(isset($_GET['id']) && $_GET['id']!=''){
     $id=get_safe_value($_GET['id']);
     mysqli_query($con,"update user set email_verify=1 where rand_str='$id'");
-    $msg="Email id verify";
+    $msg="Your email is verified successfully...";
 }else{
     redirect('index.php');
 }
