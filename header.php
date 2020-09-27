@@ -1,8 +1,23 @@
 <?php
 session_start();
-include ('config.php');
+require_once "config.php";
 include ('function.inc.php');
 include('constant.inc.php');
+$cartArr=array();
+if(isset($_SESSION['FOOD_USER_ID'])){
+    $getUserCart=getUserCart();
+    $cartArr=array();
+    foreach($getUserCart as $list){
+        $cartArr[$list['dish_detail_id']]['qty']=$list['qty'];
+    }
+}
+else{
+    if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+        $cartArr=$_SESSION['cart'];
+    }
+}
+//prx($cartArr);
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">

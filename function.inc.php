@@ -89,4 +89,30 @@ function getUserDetailsByid(){
     }
     return $data;
 }
+
+function getUserCart(){
+    global $con;
+    $arr=array();
+    $id=$_SESSION['FOOD_USER_ID'];
+    $res=mysqli_query($con,"select * from dish_cart where user_id='$id'");
+    while($row=mysqli_fetch_assoc($res)){
+        $arr[]=$row;
+    }
+    return $arr;
+}
+
+function manageUserCart($uid,$qty,$attr){
+    global $con;
+    $res=mysqli_query($con,"select * from dish_cart where user_id='$uid' and dish_detail_id='$attr'");
+    if(mysqli_num_rows($res)>0){
+        $row=mysqli_fetch_assoc($res);
+        $cid=$row['id'];
+        mysqli_query($con,"update dish_cart set qty='$qty' where id='$cid'");
+    }
+    else{
+        $added_on=date('Y-m-d h:i:s');
+        mysqli_query($con,"insert into dish_cart(user_id,dish_detail_id,qty,added_on) values('$uid','$attr','$qty','$added_on') ");
+    }
+
+}
 ?>

@@ -47,6 +47,13 @@ if($type=='login'){
 					$_SESSION['FOOD_USER_ID']=$row['user_id'];
 					$_SESSION['FOOD_USER_NAME']=$row['name'];
 					$arr=array('status'=>'success','msg'=>'');
+
+					if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+					    foreach($_SESSION['cart'] as $key=>$val){
+                            manageUserCart($_SESSION['FOOD_USER_ID'],$val['qty'],$key);
+                        }
+                    }
+
 				}else{
 					$arr=array('status'=>'error','msg'=>'Please enter correct password');
 				}

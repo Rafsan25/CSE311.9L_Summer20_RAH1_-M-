@@ -6,4 +6,8 @@ if(password_verify($new_password,$str)){
 }else{
 	echo "No";
 }
+
+session_start();
+echo '<pre>';
+print_r($_SESSION['cart']);
 ?>

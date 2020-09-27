@@ -55,7 +55,7 @@ if(isset($_GET['cat_dish'])){
                                                     <div class="product-price-wrapper">
                                                         <?php
                                                             while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res)){
-                                                                echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' value='radio_".$dish_attr_row['id']."'/>";
+                                                                echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
                                                                 echo $dish_attr_row['attribute'];
                                                                 echo "&nbsp;&nbsp;";
                                                                 echo "<span>(".$dish_attr_row['price'].")</span>";
@@ -127,31 +127,7 @@ if(isset($_GET['cat_dish'])){
         <form method="get" id="frmCatDish">
             <input type="hidden" name="cat_dish" id="cat_dish" value="<?php echo $cat_dish ?>"/>
 
-            </form>
-            <script>
-                function set_checkbox(id){
-                    var cat_dish=jQuery('#cat_dish').val();
-                    var check=cat_dish.search(":"+id);
-                    if(check!='-1'){
-                        cat_dish=cat_dish.replace(":"+id,'');
-                    }else{
-                        cat_dish=cat_dish+":"+id;
-                    }
-                    jQuery('#cat_dish').val(cat_dish);
-                    jQuery('#frmCatDish')[0].submit();
-            }
-            function setFoodType(type){
-                    jQuery('#type').val(type);
-                    jQuery('#frmCatDish')[0].submit();
-            }
-            function add_to_cart(id){
-                    var qty=jQuery('#qty'+id).val();
-                    var attr=jQuery('input[name="radio_'+id+'"]:checked').val();
-                    jQuery.ajax({
-                        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
-                    });
-            }
-            </script>
+        </form>
 
 <?php
 include("footer.php");
