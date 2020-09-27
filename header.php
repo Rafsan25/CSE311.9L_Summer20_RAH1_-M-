@@ -3,7 +3,8 @@ session_start();
 require_once "config.php";
 include ('function.inc.php');
 include('constant.inc.php');
-$cartArr=array();
+$cartArr=getUserFullCart();
+/*$cartArr=array();
 if(isset($_SESSION['FOOD_USER_ID'])){
     $getUserCart=getUserCart();
     $cartArr=array();
@@ -17,7 +18,7 @@ else{
     }
 }
 //prx($cartArr);
-
+*/
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">

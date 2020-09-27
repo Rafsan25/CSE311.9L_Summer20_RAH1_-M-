@@ -115,4 +115,23 @@ function manageUserCart($uid,$qty,$attr){
     }
 
 }
+function getUserFullCart($attr_id=''){
+    $cartArr=array();
+    if(isset($_SESSION['FOOD_USER_ID'])){
+        $getUserCart=getUserCart();
+        $cartArr=array();
+        foreach($getUserCart as $list){
+            $cartArr[$list['dish_detail_id']]['qty']=$list['qty'];
+        }
+    }else{
+        if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+            $cartArr=$_SESSION['cart'];
+        }
+    }
+    if($attr_id!=''){
+        return $cartArr[$attr_id]['qty'];
+    }else{
+        return $cartArr;
+    }
+}
 ?>

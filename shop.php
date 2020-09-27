@@ -55,10 +55,17 @@ if(isset($_GET['cat_dish'])){
                                                     <div class="product-price-wrapper">
                                                         <?php
                                                             while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res)){
-                                                                echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
+                                                                echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' id='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
                                                                 echo $dish_attr_row['attribute'];
                                                                 echo "&nbsp;&nbsp;";
-                                                                echo "<span>(".$dish_attr_row['price'].")</span>";
+                                                                echo "<span class='price'>(".$dish_attr_row['price'].")</span>";
+                                                                $added_msg="";
+                                                                if(array_key_exists($dish_attr_row['id'],$cartArr)){
+                                                                    $added_qty=getUserFullCart($dish_attr_row['id']);
+                                                                    $added_msg="(Added -$added_qty)";
+                                                                }
+                                                                echo " <span class='cart_already_added' id='shop_added_msg_".$dish_attr_row['id']."'>".$added_msg."</span>";
+
                                                                 echo "&nbsp;&nbsp;";
                                                             }
                                                         ?>
@@ -126,6 +133,7 @@ if(isset($_GET['cat_dish'])){
     </div>
         <form method="get" id="frmCatDish">
             <input type="hidden" name="cat_dish" id="cat_dish" value="<?php echo $cat_dish ?>"/>
+            <input type="hidden" name="type" id="type" value='<?php echo $type?>'/>
 
         </form>
 

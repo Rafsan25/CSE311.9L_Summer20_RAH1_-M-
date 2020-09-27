@@ -133,12 +133,21 @@ function setFoodType(type) {
 function add_to_cart(id,type){
     var qty=jQuery('#qty'+id).val();
     var attr=jQuery('input[name="radio_'+id+'"]:checked').val();
-    jQuery.ajax({
-        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
-        type:'post',
-        data:'qty='+qty+'&attt='+attr+'&type='+type,
-        success:function(result){
-            swal("Added to cart successfully!","checkout now!", "success")
-        }
-    });
+    var is_attr_checked='';
+    if(typeof attr=== 'undefined'){
+        is_attr_checked='no';
+    }
+    if(qty>0 && is_attr_checked!='no'){
+        jQuery.ajax({
+            url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
+            type:'post',
+            data:'qty='+qty+'&attt='+attr+'&type='+type,
+            success:function(result){
+                swal("Congratulation!", "Dish added successfully", "success");
+                jQuery('#shop_added_msg_'+attr).html('(Added -'+qty+')');
+            }
+        });
+    }else{
+        swal("Error", "Please select qty and dish item", "error");
+    }
 }
