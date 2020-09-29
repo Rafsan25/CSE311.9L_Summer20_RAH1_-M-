@@ -14,7 +14,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
     }
 
 }
-//Join Table- We selected All from dish table and category from category table
+//Natural Join - We selected All from dish table and category from category table
 //Condition Where category_id from dish table == id from category table
 // Order By id from dish table (DESC)
 
