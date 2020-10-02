@@ -54,7 +54,7 @@ include ("header.php");
                                 <div class="col-lg-12">
                                     <div class="cart-shiping-update-wrapper">
                                         <div class="cart-shiping-update">
-                                            <a href="<?php echo FRONT_SITE_PATH?>shop">Continue Shopping</a>
+                                            <a href="<?php echo FRONT_SITE_PATH?>shop.php">Continue Shopping</a>
                                         </div>
                                         <div class="cart-clear">
                                             <button name="update_cart">Update Shopping Cart</button>

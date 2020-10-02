@@ -4,6 +4,28 @@ require_once "config.php";
 include ('function.inc.php');
 include('constant.inc.php');
 $totalPrice=0;
+
+if(isset($_POST['update_cart'])){
+    foreach($_POST['qty'] as $key=>$val){
+        if(isset($_SESSION['FOOD_USER_ID'])){
+            if($val[0]==0){
+                // The query is similar of updated query below
+                mysqli_query($con,"delete from dish_cart where dish_detail_id='$key' and user_id=".$_SESSION['FOOD_USER_ID']);
+            }else{
+                //Updated dish_cart qty. qty is set to $val[0] which is we are getting from cart.php. The query will update qty where the dish_detail_id is $key. And user_id we are getting from login session.
+                mysqli_query($con,"update dish_cart set qty='".$val[0]."' where dish_detail_id='$key' and user_id=".$_SESSION['FOOD_USER_ID']);
+            }
+        }else{
+            // If we set the value of qty is 0 then we will unset the dish.
+            if($val[0]==0){
+                unset($_SESSION['cart'][$key]['qty']);
+            }else{
+                $_SESSION['cart'][$key]['qty']=$val[0];
+            }
+        }
+    }
+}
+
 $cartArr=getUserFullCart();
 foreach($cartArr as $list){
     $totalPrice=$totalPrice+($list['qty']*$list['price']);

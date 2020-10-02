@@ -160,4 +160,13 @@ function removeDishFromCartByid($id){
         unset($_SESSION['cart'][$id]);
     }
 }
+function emptyCart(){
+    if(isset($_SESSION['FOOD_USER_ID'])){
+        global $con;
+        $res=mysqli_query($con,"delete from dish_cart where user_id=".$_SESSION['FOOD_USER_ID']);
+    }else{
+        unset($_SESSION['cart']);
+    }
+}
+
 ?>
