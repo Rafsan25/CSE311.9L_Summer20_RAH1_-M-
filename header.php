@@ -153,10 +153,12 @@ else{
 											<?php echo $totalPrice?> BDT
 											</span></h4>
                                     </div>
+                                    <!--
                                     <div class="shopping-cart-btn">
-                                        <a href="cart.php">view cart</a>
+                                        <a href="<?php echo FRONT_SITE_PATH?>cart">view cart</a>
                                         <a href="checkout.php">checkout</a>
                                     </div>
+                                    -->
                                 </div>
                             <?php } ?>
                         </div>
@@ -176,6 +178,9 @@ else{
                                 <li><a href="shop.php">Shop</a></li>
                                 <li><a href="about_us.php">About Us</a></li>
                                 <li><a href="contact_us.php">Contact Us</a></li>
+                                <li><a href="cart.php">View Cart</a></li>
+                                <li><a href="checkout.php">Checkout</a></li>
+
                             </ul>
                         </nav>
                     </div>
