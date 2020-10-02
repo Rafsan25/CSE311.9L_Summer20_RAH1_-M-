@@ -34,13 +34,13 @@ include ("header.php");
                                                 <a href="#"><img src="<?php echo SITE_DISH_IMAGE.$list['image']?>" alt="" width="75px"></a>
                                             </td>
                                             <td class="product-name"><a href="#"><?php echo $list['dish']?> </a></td>
-                                            <td class="product-price-cart"><span class="amount"><?php echo $list['price']?> Rs</span></td>
+                                            <td class="product-price-cart"><span class="amount"><?php echo $list['price']?> BDT</span></td>
                                             <td class="product-quantity">
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" type="text" name="qty[<?php echo $key?>][]" value="<?php echo $list['qty']?>">
                                                 </div>
                                             </td>
-                                            <td class="product-subtotal"><?php echo $list['qty']*$list['price']?> Rs</td>
+                                            <td class="product-subtotal"><?php echo $list['qty']*$list['price']?> BDT</td>
                                             <td class="product-remove">
                                                 <a href="javascript:void(0)" onclick="delete_cart('<?php echo $key?>','load')"><i class="fa fa-times"></i></a>
                                             </td>

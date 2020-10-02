@@ -164,14 +164,14 @@ if(isset($_POST['place_order'])){
                                             <h4><a href="#">Phantom Remote </a></h4>
                                             <h6>Qty: <?php echo $list['qty']?></h6>
                                             <span><?php echo
-                                                    $list['qty']*$list['price'];?> Rs</span>
+                                                    $list['qty']*$list['price'];?> BDT</span>
                                         </div>
 
                                     </li>
                                 <?php } ?>
                             </ul>
                             <div class="shopping-cart-total">
-                                <h4>Total : <span class="shop-total"><?php echo $totalPrice?> Rs</span></h4>
+                                <h4>Total : <span class="shop-total"><?php echo $totalPrice?> BDT</span></h4>
                             </div>
 
                         </div>
