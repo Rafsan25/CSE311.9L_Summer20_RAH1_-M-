@@ -35,6 +35,10 @@
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/custom.js"></script>
+<script>
+    var SITE_DISH_IMAGE="<?php echo SITE_DISH_IMAGE?>";
+</script>
+<script src="assets/js/custom.js"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

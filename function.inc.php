@@ -152,5 +152,12 @@ function getDishDetailById($id){
     $row=mysqli_fetch_assoc($res);
     return $row;
 }
-
+function removeDishFromCartByid($id){
+    if(isset($_SESSION['FOOD_USER_ID'])){
+        global $con;
+        $res=mysqli_query($con,"delete from dish_cart where dish_detail_id='$id' and user_id=".$_SESSION['FOOD_USER_ID']);
+    }else{
+        unset($_SESSION['cart'][$id]);
+    }
+}
 ?>

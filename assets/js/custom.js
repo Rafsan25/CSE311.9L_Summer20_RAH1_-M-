@@ -167,3 +167,28 @@ function add_to_cart(id,type){
         swal("Error", "Please select qty and dish item", "error");
     }
 }
+function delete_cart(id){
+    jQuery.ajax({
+        url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/manage_cart.php',
+        type:'post',
+        data:'attt='+id+'&type=delete',
+        success:function(result){
+            var data=jQuery.parseJSON(result);
+            //swal("Congratulation!", "Dish added successfully", "success");
+            jQuery('#totalCartDish').html(data.totalCartDish);
+            jQuery('#shop_added_msg_'+id).html('');
+
+            if(data.totalCartDish==0){
+                jQuery('.shopping-cart-content').remove();
+                jQuery('#totalPrice').html('');
+            }else{
+                var tp1=data.totalPrice;
+                jQuery('#shopTotal').html(tp1+ 'Rs');
+                jQuery('#attr_'+id).remove();
+                jQuery('#totalPrice').html(data.totalPrice+' Rs');
+            }
+
+
+        }
+    });
+}
