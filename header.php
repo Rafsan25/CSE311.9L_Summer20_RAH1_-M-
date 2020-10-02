@@ -114,11 +114,11 @@ else{
                             <a href="#">
                                 <div class="header-icon-style">
                                     <i class="icon-handbag icons"></i>
-                                    <span class="count-style" id="totalCartDish"></span>
+                                    <span class="count-style" id="totalCartDish"><?php echo $totalCartDish?></span>
                                 </div>
                                 <div class="cart-text">
                                     <span class="digit">My Cart</span>
-                                    <span class="cart-digit-bold" id="totalCartDish">
+                                    <span class="cart-digit-bold" id="totalPrice">
                                     <?php
                                     if($totalPrice!=0){
                                         echo $totalPrice.' BDT';
@@ -154,8 +154,8 @@ else{
 											</span></h4>
                                     </div>
                                     <div class="shopping-cart-btn">
-                                        <a href="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/cart.php">view cart</a>
-                                        <a href="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/checkout.php">checkout</a>
+                                        <a href="cart.php">view cart</a>
+                                        <a href="checkout.php">checkout</a>
                                     </div>
                                 </div>
                             <?php } ?>
