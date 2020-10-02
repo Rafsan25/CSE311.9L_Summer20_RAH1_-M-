@@ -9,5 +9,5 @@ if(password_verify($new_password,$str)){
 
 session_start();
 echo '<pre>';
-print_r($_SESSION['cart']);
+unset($_SESSION['cart']);
 ?>

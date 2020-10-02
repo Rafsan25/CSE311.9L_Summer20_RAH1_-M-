@@ -3,7 +3,12 @@ session_start();
 require_once "config.php";
 include ('function.inc.php');
 include('constant.inc.php');
+$totalPrice=0;
 $cartArr=getUserFullCart();
+foreach($cartArr as $list){
+    $totalPrice=$totalPrice+($list['qty']*$list['price']);
+}
+$totalCartDish=count($cartArr);
 /*$cartArr=array();
 if(isset($_SESSION['FOOD_USER_ID'])){
     $getUserCart=getUserCart();
@@ -109,20 +114,58 @@ else{
                             <a href="#">
                                 <div class="header-icon-style">
                                     <i class="icon-handbag icons"></i>
-                                    <span class="count-style">0</span>
+                                    <span class="count-style" id="totalCartDish"></span>
                                 </div>
                                 <div class="cart-text">
                                     <span class="digit">My Cart</span>
-                                    <span class="cart-digit-bold"></span>
+                                    <span class="cart-digit-bold" id="totalCartDish">
+                                    <?php
+                                    if($totalPrice!=0){
+                                        echo $totalPrice.' BDT';
+                                    }
+                                    ?></span>
                                 </div>
                             </a>
-
+                            <?php if($totalPrice!=0){?>
+                                <div class="shopping-cart-content">
+                                    <ul id="cart_ul">
+                                        <?php foreach($cartArr as $key=>$list){ ?>
+                                            <li class="single-shopping-cart" id="attr_<?php echo $key?>">
+                                                <div class="shopping-cart-img">
+                                                    <a href="javascript:void(0)"><img alt="" src="<?php echo SITE_DISH_IMAGE.$list['image']?>"></a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="javascript:void(0)">
+                                                            <?php echo $list['dish']?>
+                                                        </a></h4>
+                                                    <h6>Qty: <?php echo $list['qty']?></h6>
+                                                    <span><?php echo
+                                                            $list['qty']*$list['price'];?> BDT</span>
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <a href="javascript:void(0)" onclick="delete_cart('<?php echo $key?>')"><i class="ion ion-close"></i></a>
+                                                </div>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                    <div class="shopping-cart-total">
+                                        <h4>Total : <span class="shop-total" id="shopTotal">
+											<?php echo $totalPrice?> BDT
+											</span></h4>
+                                    </div>
+                                    <div class="shopping-cart-btn">
+                                        <a href="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/cart.php">view cart</a>
+                                        <a href="http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/checkout.php">checkout</a>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="header-bottom transparent-bar black-bg">
         <div class="container">
             <div class="row">

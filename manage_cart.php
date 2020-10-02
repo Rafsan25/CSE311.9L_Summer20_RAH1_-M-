@@ -14,5 +14,19 @@ if($type=='add'){
     }else{
         $_SESSION['cart'][$attr]['qty']=$qty;
     }
+    $getUserFullCart=getUserFullCart();
+    $totalPrice=0;
+    foreach($getUserFullCart as $list){
+        $totalPrice=$totalPrice+($list['qty']*$list['price']);
+    }
+
+    $getDishDetail=getDishDetailById($attr);
+    $price=$getDishDetail['price'];
+    $dish=$getDishDetail['dish'];
+    $image=$getDishDetail['image'];
+
+    $totaDish=count(getUserFullCart());
+    $arr=array('totalCartDish'=>$totaDish,'totalPrice'=>$totalPrice,'price'=>$price,'dish'=>$dish,'image'=>$image);
+    echo json_encode($arr);
 }
 ?>

@@ -122,10 +122,22 @@ function getUserFullCart($attr_id=''){
         $cartArr=array();
         foreach($getUserCart as $list){
             $cartArr[$list['dish_detail_id']]['qty']=$list['qty'];
+            $getDishDetail=getDishDetailById($list['dish_detail_id']);
+
+            $cartArr[$list['dish_detail_id']]['price']=$getDishDetail['price'];
+            $cartArr[$list['dish_detail_id']]['dish']=$getDishDetail['dish'];
+            $cartArr[$list['dish_detail_id']]['image']=$getDishDetail['image'];
         }
     }else{
         if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
-            $cartArr=$_SESSION['cart'];
+            foreach($_SESSION['cart'] as $key=>$val){
+                $cartArr[$key]['qty']=$val['qty'];
+                $getDishDetail=getDishDetailById($key);
+                $cartArr[$key]['price']=$getDishDetail['price'];
+                $cartArr[$key]['dish']=$getDishDetail['dish'];
+                $cartArr[$key]['image']=$getDishDetail['image'];
+            }
+
         }
     }
     if($attr_id!=''){
@@ -134,4 +146,11 @@ function getUserFullCart($attr_id=''){
         return $cartArr;
     }
 }
+function getDishDetailById($id){
+    global $con;
+    $res=mysqli_query($con,"select dish.dish,dish.image,dish_details.price from dish_details,dish where dish_details.id='$id' and dish.id=dish_details.dish_id");
+    $row=mysqli_fetch_assoc($res);
+    return $row;
+}
+
 ?>

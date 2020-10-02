@@ -1,11 +1,17 @@
 <?php
-include ("header.php");
+require_once "config.php";
+include("header.php");
 $cat_dish='';
 $cat_dish_arr=array();
+$type='';
+
 if(isset($_GET['cat_dish'])){
     $cat_dish=get_safe_value($_GET['cat_dish']);
     $cat_dish_arr=array_filter(explode(':',$cat_dish));
     $cat_dish_str=implode(",",$cat_dish_arr);
+}
+if(isset($_GET['type'])){
+    $type=get_safe_value($_GET['type']);
 }
 ?>
 
@@ -57,7 +63,7 @@ if(isset($_GET['cat_dish'])){
                                                             while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res)){
                                                                 echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' id='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
                                                                 echo $dish_attr_row['attribute'];
-                                                                echo "&nbsp;&nbsp;";
+                                                                echo "&nbsp;";
                                                                 echo "<span class='price'>(".$dish_attr_row['price'].")</span>";
                                                                 $added_msg="";
                                                                 if(array_key_exists($dish_attr_row['id'],$cartArr)){
