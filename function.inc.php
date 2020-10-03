@@ -81,7 +81,7 @@ function getUserDetailsByid(){
     //$data['referral_code']='';
 
     if(isset($_SESSION['FOOD_USER_ID'])){
-        // When the Session is started
+        // When the Session is started The query will select all from user table. Where the user_id is equals to session FOOD_USER_ID. Which means the user logged in right now the session will get his user id and get all the information is needed
         $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where user_id=".$_SESSION['FOOD_USER_ID']));
         $data['name']=$row['name'];
         $data['email']=$row['email'];
@@ -96,6 +96,7 @@ function getUserCart(){
     global $con;
     $arr=array();
     $id=$_SESSION['FOOD_USER_ID'];
+    // For the logged in user the session will get the current user id and check where user_id=$id from dish_cart and select all the data from dish_cart table.
     $res=mysqli_query($con,"select * from dish_cart where user_id='$id'");
     while($row=mysqli_fetch_assoc($res)){
         $arr[]=$row;
@@ -105,14 +106,17 @@ function getUserCart(){
 
 function manageUserCart($uid,$qty,$attr){
     global $con;
+    // Check the user_id and dish_detail_id to select specific row id.
     $res=mysqli_query($con,"select * from dish_cart where user_id='$uid' and dish_detail_id='$attr'");
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
         $cid=$row['id'];
+        // After selecting the row id will update the qty of dish.
         mysqli_query($con,"update dish_cart set qty='$qty' where id='$cid'");
     }
     else{
         $added_on=date('Y-m-d h:i:s');
+        // When user add new dish in the cart section the user_id, dish_detail_id, qty, time will be store in dish_cart.
         mysqli_query($con,"insert into dish_cart(user_id,dish_detail_id,qty,added_on) values('$uid','$attr','$qty','$added_on') ");
     }
 
@@ -165,6 +169,7 @@ function removeDishFromCartByid($id){
 function emptyCart(){
     if(isset($_SESSION['FOOD_USER_ID'])){
         global $con;
+        // After placing the order current users cart data will not be needed. That's why deleted all from dish_cart.
         $res=mysqli_query($con,"delete from dish_cart where user_id=".$_SESSION['FOOD_USER_ID']);
     }else{
         unset($_SESSION['cart']);
