@@ -5328,6 +5328,17 @@ h5.panel-title span {
     margin-left: 4px;
     cursor: pointer;
 }
+.checkout-login-btn .my_btn {
+    background-color: #f2f2f2;
+    color: #242424;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 16px 62px 17px;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
 .category_list .cat_checkbox{
     width: 15px;
     height: 12px;
@@ -5347,3 +5358,4 @@ h5.panel-title span {
     color: red;
 }
 .shopping-cart-img img{width:100%;}
+

@@ -27,6 +27,7 @@ include ("header.php");
                                                     </div>
                                                     <button type="submit" id="login_submit">Login</button>
                                                     <input type="hidden" name="type" value="login"/>
+                                                    <input type="hidden" name="is_checkout" id="is_checkout" value=""/>
                                                    <div id="form_login_msg" class="success_field"></div>
                                                 </div>
                                             </form>

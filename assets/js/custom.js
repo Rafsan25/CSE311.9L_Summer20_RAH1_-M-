@@ -39,7 +39,10 @@ jQuery('#frmLogin').on('submit',function(e){
             if(data.status=='error'){
                 jQuery('#form_login_msg').html(data.msg);
             }
-            if(data.status=='success'){
+            var is_checkout=jQuery('#is_checkout').val();
+            if(is_checkout=='yes'){
+                window.location.href='checkout.php';
+            }else if(data.status=='success'){
                 //jQuery('#form_login_msg').html(data.msg);
                 window.location.href='shop.php';
             }

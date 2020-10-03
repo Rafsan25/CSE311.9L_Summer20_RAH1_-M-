@@ -81,6 +81,7 @@ function getUserDetailsByid(){
     //$data['referral_code']='';
 
     if(isset($_SESSION['FOOD_USER_ID'])){
+        // When the Session is started
         $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where user_id=".$_SESSION['FOOD_USER_ID']));
         $data['name']=$row['name'];
         $data['email']=$row['email'];
@@ -89,6 +90,7 @@ function getUserDetailsByid(){
     }
     return $data;
 }
+
 
 function getUserCart(){
     global $con;
