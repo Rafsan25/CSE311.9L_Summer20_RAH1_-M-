@@ -18,9 +18,7 @@ include ("header.php");
             <div class="col-lg-12 col-md-7 d-flex align-items-center">
                 <div class="overview-content-2">
                     <h2>Welcome To <span>The Online Food Ordering</span> Store !</h2>
-                    <p class="peragraph-blog">Billy Shop is a premium HTML template designed and develoved from the ground up with the sole purpose of helping you create an astonishing, the beautiful and user friendly website that will boost your product’s sales.</p>
-                    <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme. This includes all Magento themes that are required for your online store's successful implementation.</p>
-                    <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme.</p>
+                    <p class="peragraph-blog">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
             </div>
 

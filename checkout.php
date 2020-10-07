@@ -143,6 +143,7 @@ if(isset($_POST['place_order'])){
                                                         <div id="coupon_code_msg"></div>
                                                     </div>
                                                     <div class="col-lg-5 col-md-12">
+
                                                         <div class="billing-back-btn">
                                                             <div class="billing-btn">
                                                                 <button type="button" name="place_order" onclick="apply_coupon()">Apply Coupon</button>
@@ -215,10 +216,10 @@ if(isset($_POST['place_order'])){
 
 
 <?php
-/*if(isset($_SESSION['COUPON_CODE'])){
+if(isset($_SESSION['COUPON_CODE'])){
     unset($_SESSION['COUPON_CODE']);
     unset($_SESSION['FINAL_PRICE']);
-}*/
+}
 
 include("footer.php");
 ?>
