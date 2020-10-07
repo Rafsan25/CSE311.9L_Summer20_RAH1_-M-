@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2020 at 04:42 PM
+-- Generation Time: Oct 07, 2020 at 10:06 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -113,7 +113,8 @@ CREATE TABLE `coupon_code` (
 --
 
 INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(1, 'Special1', 'P', 10, 200, '2020-10-04', 1, '2020-09-22 06:48:35');
+(1, 'Special1', 'P', 10, 200, '2020-10-04', 1, '2020-09-22 06:48:35'),
+(2, 'coupon', 'F', 50, 50, '2020-10-23', 1, '2020-10-07 09:03:37');
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,12 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (3, 3, 2, 1200, 1),
 (4, 3, 3, 30, 4),
 (5, 3, 1, 250, 2),
-(6, 4, 2, 1200, 7);
+(6, 4, 2, 1200, 7),
+(7, 5, 2, 1200, 2),
+(8, 6, 2, 1200, 6),
+(9, 7, 2, 1200, 3),
+(10, 7, 3, 30, 6),
+(11, 8, 2, 1200, 2);
 
 -- --------------------------------------------------------
 
@@ -240,6 +246,8 @@ CREATE TABLE `order_master` (
   `phone` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `total_price` float NOT NULL,
+  `coupon_code` varchar(20) NOT NULL,
+  `final_price` float NOT NULL,
   `zipcode` varchar(10) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
   `payment_status` varchar(20) NOT NULL,
@@ -252,10 +260,14 @@ CREATE TABLE `order_master` (
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `phone`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`, `payment_type`) VALUES
-(2, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 9630, '1216', 0, 'pending', 1, '2020-10-03 04:05:36', ''),
-(3, 25, 'Syed Salman Reza', 'syedsalmanreza1998@gmail.com', '1709279556', 'Mirpur, Dhaka', 1820, '1216', 0, 'pending', 1, '2020-10-03 04:46:21', ''),
-(4, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 8400, '1216', 1, 'pending', 1, '2020-10-07 04:31:22', 'cod');
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `phone`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`, `payment_type`) VALUES
+(2, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 9630, '', 0, '1216', 0, 'pending', 1, '2020-10-03 04:05:36', ''),
+(3, 25, 'Syed Salman Reza', 'syedsalmanreza1998@gmail.com', '1709279556', 'Mirpur, Dhaka', 1820, '', 0, '1216', 0, 'pending', 1, '2020-10-03 04:46:21', ''),
+(4, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 8400, '', 0, '1216', 1, 'pending', 2, '2020-10-07 04:31:22', 'cod'),
+(5, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 2400, '', 0, '1216', 0, 'pending', 1, '2020-10-07 09:00:27', 'cod'),
+(6, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 7200, '', 7200, '1216', 0, 'pending', 1, '2020-10-07 09:30:31', 'cod'),
+(7, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 3780, '', 3780, '1216', 0, 'pending', 1, '2020-10-07 09:56:03', 'cod'),
+(8, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 2400, '', 2400, '1216', 0, 'pending', 1, '2020-10-07 09:56:57', 'cod');
 
 -- --------------------------------------------------------
 
@@ -273,7 +285,8 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`id`, `order_status`) VALUES
-(1, 'Pending');
+(1, 'Pending'),
+(2, 'success');
 
 -- --------------------------------------------------------
 
@@ -406,7 +419,7 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `delivery_boy`
@@ -424,7 +437,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -436,19 +449,19 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
