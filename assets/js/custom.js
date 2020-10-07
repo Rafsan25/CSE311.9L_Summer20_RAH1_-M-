@@ -204,7 +204,7 @@ function apply_coupon(){
         jQuery('#coupon_code_msg').html('Please enter coupon code');
     }else{
         jQuery.ajax({
-            url:FRONT_SITE_PATH+'apply_coupon',
+            url:'http://127.0.0.1/CSE311.9L_Summer20_RAH1_-M-/apply_coupon.php',
             type:'post',
             data:'coupon_code='+coupon_code,
             success:function(result){

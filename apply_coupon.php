@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "config.php";
-include('database.inc.php');
 include('function.inc.php');
 include('constant.inc.php');
 include('smtp/PHPMailerAutoload.php');
