@@ -6,44 +6,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
 
     if(isset($_GET['order_status'])){
         $order_status=get_safe_value($_GET['order_status']);
-
-        if($order_status==5){
-            $cancel_at=date('Y-m-d h:i:s');
-            $sql="update order_master set order_status='$order_status',cancel_by='admin',cancel_at='$cancel_at' where id='$id'";
-        }else{
-            $sql="update order_master set order_status='$order_status' where id='$id'";
-        }
-        mysqli_query($con,$sql);
-        $getSetting=getSetting();
-        $referral_amt=$getSetting['referral_amt'];
-        if($referral_amt>0){
-            if($order_status==4){
-                $getOrderById=getOrderById($id);
-
-                $user_id=$getOrderById['0']['user_id'];
-                $row=mysqli_fetch_assoc(mysqli_query($con,"select count(*) as total_order from order_master where user_id='$user_id' and order_status=4"));
-                $total_order=$row['total_order'];
-                if($total_order==1){
-
-                    $res=mysqli_query($con,"select from_referral_code,email from user where id='$user_id'");
-                    if(mysqli_num_rows($res)>0){
-                        $row=mysqli_fetch_assoc($res);
-                        $email=$row['email'];
-                        $from_referral_code=$row['from_referral_code'];
-                        $row=mysqli_fetch_assoc(mysqli_query($con,"select id from user where referral_code='$from_referral_code'"));
-                        $uid=$row['id'];
-                        $msg1='Referral Amt from '.$email;
-                        manageWallet($uid,$referral_amt,'in',$msg1);
-                    }
-
-                }
-
-            }
-        }
-
-
-
-
+        mysqli_query($con,"update order_master set order_status='$order_status' where id='$id'");
         redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
     }
 
