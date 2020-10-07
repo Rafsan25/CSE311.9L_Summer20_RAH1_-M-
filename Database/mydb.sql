@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2020 at 07:18 PM
+-- Generation Time: Oct 03, 2020 at 04:50 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -211,8 +211,19 @@ CREATE TABLE `order_detail` (
   `order_id` int(11) NOT NULL,
   `dish_details_id` int(11) NOT NULL,
   `price` float NOT NULL,
-  `gst` float NOT NULL
+  `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`) VALUES
+(1, 2, 2, 1200, 8),
+(2, 2, 3, 30, 1),
+(3, 3, 2, 1200, 1),
+(4, 3, 3, 30, 4),
+(5, 3, 1, 250, 2);
 
 -- --------------------------------------------------------
 
@@ -225,15 +236,23 @@ CREATE TABLE `order_master` (
   `user_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `mobile` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `total_price` float NOT NULL,
-  `gst` float NOT NULL,
+  `zipcode` varchar(10) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
-  `payment_status` int(11) NOT NULL,
+  `payment_status` varchar(20) NOT NULL,
   `order_status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_master`
+--
+
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `phone`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
+(2, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 9630, '1216', 0, 'pending', 1, '2020-10-03 04:05:36'),
+(3, 25, 'Syed Salman Reza', 'syedsalmanreza1998@gmail.com', '1709279556', 'Mirpur, Dhaka', 1820, '1216', 0, 'pending', 1, '2020-10-03 04:46:21');
 
 -- --------------------------------------------------------
 
@@ -245,6 +264,13 @@ CREATE TABLE `order_status` (
   `id` int(11) NOT NULL,
   `order_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_status`
+--
+
+INSERT INTO `order_status` (`id`, `order_status`) VALUES
+(1, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -258,7 +284,7 @@ CREATE TABLE `user` (
   `user_name` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` int(20) NOT NULL,
   `address` varchar(45) NOT NULL,
   `status` int(11) NOT NULL,
   `email_verify` int(11) NOT NULL,
@@ -270,11 +296,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `user_name`, `password`, `email`, `phone`, `address`, `status`, `email_verify`, `rand_str`) VALUES
-(1, 'Rafsan Khan', 'rafsan1', '123456', 'hashim.khan@northsouth.edu', 1778211102, 'Rampura,Dhaka', 0, 0, ''),
-(5, 'Syed Salman Reza', 'rafsan457', '$2y$10$d2GiEO9hKCZHbz1zH4ZMDOSXG55K8RdK4tco0d', 'syedsalmanreza1998@gmail.com', 0, 'Mirpur, Dhaka', 1, 1, 'pibvhaomplniqwr'),
-(7, 'Syed Salman Reza', 'salman457', '$2y$10$JBnpiX1R5ExdwdQfg.arLu9qZfRQQsL/3WPSApmpYBnW303gLFUam', 'syedsalmanreza556@gmail.com', 0, 'Mirpur, Dhaka', 1, 1, 'awcunnuqoyepqdf'),
-(8, 'asdsad', 'asdasdas', '$2y$10$Xxn1/Rkz86mMSnQcBIC7ReEpVke/qL3U..PJd8.ynNDcAi9WJ2yPe', 'asdsad@dasd', 0, 'asdasdas', 1, 0, 'efrpxugcsjtqxif'),
-(9, 'sadfasd', 'asdsad', '$2y$10$NFUbkFGGOikiXQNbzQL2QOqDSuokvrsg0FxCQ45g/7VVnjzenMAsa', 'asdsd@fd', 0, 'sdfsf', 1, 0, 'phvjbidnjdmponb');
+(22, 'Syed Salman Reza', 'salman457', '$2y$10$tP76XvHAZZUKbKP43QIhGe8MIvlOMZz1FF7xH/Th9aTUoOKjRRO.e', 'syedsalmanreza556@gmail.com', 1709279556, 'Mirpur, Dhaka', 1, 1, 'lzocsfyxdkpntwi'),
+(23, 'Rafsan Khan', 'RafsanBhai', '$2y$10$HX9t8kzgp0WPJXcE8EIvGuELoiz1vXLXIpxRpTdE7SKTXGHDo/4Qe', 'rafsanbhai777@gmail.com', 1709279557, 'Rampura, Dhaka', 1, 1, 'ceodwkigleyfvbz'),
+(24, 'Gustav', 'salman457', '$2y$10$0hncZCM8iioZFqnZZRCdjOJdjLz5nycDS5EIAgibhEs9EUw7Gz//S', 'foodordering311@gmail.com', 1709279558, 'Mirpur, Dhaka', 1, 1, 'hnzrggbqxudklyo'),
+(25, 'Syed Salman Reza', 'salman1998', '$2y$10$QAhWa.k6r2opyFG0KmSkvOzsOXX0tJc4BKKe3Uv51ut5o/3j3oGRy', 'syedsalmanreza1998@gmail.com', 1709279556, 'Mirpur, Dhaka', 1, 1, 'spcvsrycoqlrjpa');
 
 --
 -- Indexes for dumped tables
@@ -396,7 +421,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -408,25 +433,25 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
