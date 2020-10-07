@@ -27,9 +27,8 @@ if(isset($_POST['update_cart'])){
 }
 
 $cartArr=getUserFullCart();
-foreach($cartArr as $list){
-    $totalPrice=$totalPrice+($list['qty']*$list['price']);
-}
+
+$totalPrice=getcartTotalPrice();
 $totalCartDish=count($cartArr);
 /*$cartArr=array();
 if(isset($_SESSION['FOOD_USER_ID'])){

@@ -121,6 +121,15 @@ function manageUserCart($uid,$qty,$attr){
     }
 
 }
+function getcartTotalPrice(){
+    $cartArr=getUserFullCart();
+    $totalPrice=0;
+    foreach($cartArr as $list){
+        $totalPrice=$totalPrice+($list['qty']*$list['price']);
+    }
+    return $totalPrice;
+}
+
 function getUserFullCart($attr_id=''){
     $cartArr=array();
     if(isset($_SESSION['FOOD_USER_ID'])){

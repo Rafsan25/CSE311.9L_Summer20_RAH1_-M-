@@ -5359,3 +5359,11 @@ h5.panel-title span {
 }
 .shopping-cart-img img{width:100%;}
 
+#coupon_code_msg{
+    margin-top:-10px;
+    color:red;
+}
+.coupon_price_box{
+    display:none;
+}
+
