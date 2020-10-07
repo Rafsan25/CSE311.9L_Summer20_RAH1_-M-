@@ -139,7 +139,7 @@ if(isset($_POST['place_order'])){
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="billing-info">
                                                             <label>Coupon Code</label>
-                                                            <input type="text"  name="coupon_code" id="coupon_code" required>
+                                                            <input type="text"  name="coupon_code" id="coupon_code">
                                                         </div>
                                                         <div id="coupon_code_msg"></div>
                                                     </div>

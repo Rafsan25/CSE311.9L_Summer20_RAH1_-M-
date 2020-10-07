@@ -6,16 +6,18 @@ if(isset($_GET['id']) && $_GET['id']>0){
 
     if(isset($_GET['order_status'])){
         $order_status=get_safe_value($_GET['order_status']);
+        // Update order_master
         mysqli_query($con,"update order_master set order_status='$order_status' where id='$id'");
         redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
     }
 
     if(isset($_GET['delivery_boy'])){
         $delivery_boy=get_safe_value($_GET['delivery_boy']);
+        // Update order_master
         mysqli_query($con,"update order_master set delivery_boy_id='$delivery_boy' where id='$id'");
         redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
     }
-
+    // Natural Join Table
     $sql="select order_master.*,order_status.order_status as order_status_str from order_master,order_status where order_master.order_status=order_status.id and order_master.id='$id' order by order_master.id desc";
     $res=mysqli_query($con,$sql);
     if(mysqli_num_rows($res)>0){

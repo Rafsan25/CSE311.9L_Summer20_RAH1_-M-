@@ -186,6 +186,7 @@ function emptyCart(){
 }
 function getOrderDetails($oid){
     global $con;
+    // Natural Join Table
     $sql="select order_detail.price,order_detail.qty,dish_details.attribute,dish.dish
 	from order_detail,dish_details,dish
 	WHERE

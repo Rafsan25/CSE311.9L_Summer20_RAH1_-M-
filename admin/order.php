@@ -1,6 +1,6 @@
 <?php
 include('top.php');
-
+// Natural Join Table
 $sql="select order_master.*,order_status.order_status as order_status_str from order_master,order_status where order_master.order_status=order_status.id order by order_master.id desc";
 $res=mysqli_query($con,$sql);
 
