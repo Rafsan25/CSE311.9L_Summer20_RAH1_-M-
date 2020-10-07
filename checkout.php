@@ -215,10 +215,10 @@ if(isset($_POST['place_order'])){
 
 
 <?php
-/*if(isset($_SESSION['COUPON_CODE'])){
+if(isset($_SESSION['COUPON_CODE'])){
     unset($_SESSION['COUPON_CODE']);
     unset($_SESSION['FINAL_PRICE']);
-}*/
+}
 
 include("footer.php");
 ?>
