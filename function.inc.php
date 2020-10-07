@@ -175,5 +175,22 @@ function emptyCart(){
         unset($_SESSION['cart']);
     }
 }
+function getOrderDetails($oid){
+    global $con;
+    $sql="select order_detail.price,order_detail.qty,dish_details.attribute,dish.dish
+	from order_detail,dish_details,dish
+	WHERE
+	order_detail.order_id=$oid AND
+	order_detail.dish_details_id=dish_details.id AND
+	dish_details.dish_id=dish.id";
+    $data=array();
+    $res=mysqli_query($con,$sql);
+    while($row=mysqli_fetch_assoc($res)){
+        $data[]=$row;
+    }
+    return $data;
+
+}
+
 
 ?>

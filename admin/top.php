@@ -15,6 +15,8 @@ if (!isset($_SESSION['IS_LOGIN'])){
 $page_title='';
 if($cur_path=='' || $cur_path=='Welcome_Page.php'){
 	$page_title='Dashboard';
+}elseif($cur_path=='order.php'){
+    $page_title='Order';
 }elseif($cur_path=='category.php' || $cur_path=='manage_category.php'){
 	$page_title='Manage Category';
 }elseif($cur_path=='user.php' || $cur_path=='manage_user.php'){
@@ -100,6 +102,12 @@ if($cur_path=='' || $cur_path=='Welcome_Page.php'){
                     <a class="nav-link" href="Welcome_Page.php">
                         <i class="mdi mdi-view-quilt menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="order.php">
+                        <i class="mdi mdi-view-headline menu-icon"></i>
+                        <span class="menu-title">Order</span>
                     </a>
                 </li>
                 <li class="nav-item">
