@@ -30,7 +30,7 @@ if(isset($_POST['place_order'])){
 
     $added_on=date('Y-m-d h:i:s');
     // This query is for Order Master Table. When user place an order it will take the user_id from Session. Naame, phone, email will will be getting from getUserDetailsByid() function. User will input their zip and address in the checkout page. The totalPrice is calculated in header.php.
-    $sql="insert into order_master(user_id,name,email,phone,address,zipcode,total_price,order_status,payment_status,added_on) values('".$_SESSION['FOOD_USER_ID']."','$checkout_name','$checkout_email','$checkout_phone','$checkout_address','$checkout_zip','$totalPrice','1','pending','$added_on')";
+    $sql="insert into order_master(user_id,name,email,phone,address,zipcode,total_price,order_status,payment_status,added_on,payment_type) values('".$_SESSION['FOOD_USER_ID']."','$checkout_name','$checkout_email','$checkout_phone','$checkout_address','$checkout_zip','$totalPrice','1','pending','$added_on','$payment_type')";
     mysqli_query($con,$sql);
     // ID from order_master table
     $insert_id=mysqli_insert_id($con);

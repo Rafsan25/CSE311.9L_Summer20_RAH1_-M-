@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2020 at 04:50 PM
+-- Generation Time: Oct 07, 2020 at 04:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -223,7 +223,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (2, 2, 3, 30, 1),
 (3, 3, 2, 1200, 1),
 (4, 3, 3, 30, 4),
-(5, 3, 1, 250, 2);
+(5, 3, 1, 250, 2),
+(6, 4, 2, 1200, 7);
 
 -- --------------------------------------------------------
 
@@ -243,16 +244,18 @@ CREATE TABLE `order_master` (
   `delivery_boy_id` int(11) NOT NULL,
   `payment_status` varchar(20) NOT NULL,
   `order_status` int(11) NOT NULL,
-  `added_on` datetime NOT NULL
+  `added_on` datetime NOT NULL,
+  `payment_type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `phone`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
-(2, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 9630, '1216', 0, 'pending', 1, '2020-10-03 04:05:36'),
-(3, 25, 'Syed Salman Reza', 'syedsalmanreza1998@gmail.com', '1709279556', 'Mirpur, Dhaka', 1820, '1216', 0, 'pending', 1, '2020-10-03 04:46:21');
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `phone`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`, `payment_type`) VALUES
+(2, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 9630, '1216', 0, 'pending', 1, '2020-10-03 04:05:36', ''),
+(3, 25, 'Syed Salman Reza', 'syedsalmanreza1998@gmail.com', '1709279556', 'Mirpur, Dhaka', 1820, '1216', 0, 'pending', 1, '2020-10-03 04:46:21', ''),
+(4, 24, 'Gustav', 'foodordering311@gmail.com', '1709279558', 'Mirpur, Dhaka', 8400, '1216', 1, 'pending', 1, '2020-10-07 04:31:22', 'cod');
 
 -- --------------------------------------------------------
 
@@ -421,7 +424,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -433,13 +436,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_status`
